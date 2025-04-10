@@ -11,6 +11,14 @@ def dramatic_effect(txt):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.04)
+        #dramatic_effect uses a loop to type the characters in a string 1 by 1, making the program more visually appealing.
+
+def no_blank_fields_pls (field):
+    '''If the user does not fill a field, this function will detect it and ask them to do it'''
+    while field == '' or field.isalpha() == False:
+        print("Please, only introduce words in this field.")
+        time.sleep(0.5)
+        #This function prevents the user from typing letters or leaving blank fields when they are asked something.
 #Main code
 dramatic_effect('Welcome to the\n')
 time.sleep(0.5)
@@ -29,3 +37,7 @@ dramatic_effect('Charizard 🦎🐦‍🔥\n')
 dramatic_effect('Hisuian Decidueye 🍃🦉\n')
 dramatic_effect('Swampert 🦎💧\n')
 dramatic_effect('Toggekiss 🪽✨\n')
+p1_pkmn = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
+p1_pkmn = p1_pkmn.lower()
+if p1_pkmn == 'info decidueye':
+    dramatic_effect('Decidueye')
