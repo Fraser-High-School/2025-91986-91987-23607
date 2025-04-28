@@ -37,26 +37,31 @@ dramatic_effect('Charizard 🦎🐦‍🔥\n')
 dramatic_effect('Hisuian Decidueye 🍃🦉\n')
 dramatic_effect('Swampert 🦎💧\n')
 dramatic_effect('Toggekiss 🪽✨\n')
-while True:
-    p1_pkmn = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
-    p1_pkmn = p1_pkmn.lower()
-    time.sleep(1)
-    if p1_pkmn == 'info decidueye':
-        dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon'")
-        dramatic_effect("Decidueye uses Triple Arrow to increase the chance of landing critical hits, then attacks with powerful physical moves.")
+for n in 3:
+    while True:
+        p1_pkmn = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
+        p1_pkmn = p1_pkmn.lower()
         time.sleep(1)
-    elif p1_pkmn == 'info charizard':
-        dramatic_effect("Charizard, #006, 'Flame Pokémon'")
-        dramatic_effect("Charizard has a move for every situation. Find the right one to melt your oponent with super effective attacks.")
-        time.sleep(1)
-    elif p1_pkmn == 'info Swampert':
-        dramatic_effect("Swampert, #260, 'Mud Fish Pokémon'")
-        dramatic_effect("Using Curse to increase its physical stats, Swampert can resist and deliver hard hits.")
-        time.sleep(1)
-    elif p1_pkmn == 'info togekiss':
-        dramatic_effect("Togekiss, #468, 'Jubelee Pokémon'")
-        dramatic_effect("Togekiss can heal itself with Daining kiss and use Defog to bring the Pokémon's stats back to normal.")
-        time.sleep(1)
-    elif p1_pkmn == 'decidueye':
-    else:
-        dramatic_effect('Sorry, but I did not understand your comand, please try again')
+        if p1_pkmn == 'info decidueye':
+            dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon'")
+            dramatic_effect("Decidueye uses Triple Arrow to increase the chance of landing critical hits, then attacks with powerful physical moves.")
+            time.sleep(1)
+        elif p1_pkmn == 'info charizard':
+            dramatic_effect("Charizard, #006, 'Flame Pokémon'")
+            dramatic_effect("Charizard has a move for every situation. Find the right one to melt your oponent with super effective attacks.")
+            time.sleep(1)
+        elif p1_pkmn == 'info Swampert':
+            dramatic_effect("Swampert, #260, 'Mud Fish Pokémon'")
+            dramatic_effect("Using Curse to increase its physical stats, Swampert can resist and deliver hard hits.")
+            time.sleep(1)
+        elif p1_pkmn == 'info togekiss':
+            dramatic_effect("Togekiss, #468, 'Jubelee Pokémon'")
+            dramatic_effect("Togekiss can heal itself with Daining kiss and use Defog to bring the Pokémon's stats back to normal.")
+            time.sleep(1)
+        elif p1_pkmn == 'decidueye':
+            p1_pkmn_1 = 'decidueye'
+            p1_pkmn_1_moveset = input(dramatic_effect('Ch'))
+            break
+        
+        else:
+            dramatic_effect('Sorry, but I did not understand your comand, please try again')
