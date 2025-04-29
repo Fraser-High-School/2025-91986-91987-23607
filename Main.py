@@ -60,7 +60,7 @@ for n in 3:
             time.sleep(1)
         elif p1_pkmn == 'decidueye':
             p1_pkmn_1 = 'decidueye'
-            p1_pkmn_1_moveset = input(dramatic_effect('Ch'))
+            p1_pkmn_1_moveset = input(dramatic_effect('Choose '))
             break
         
         else:
