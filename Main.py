@@ -22,15 +22,15 @@ def no_blank_fields_pls (field):
 #Main code
 dramatic_effect('Welcome to the\n')
 time.sleep(0.5)
-p('⭐Pokémon⭐')
+p('⭐Pokémon⭐\n')
 time.sleep(0.5)
-p('⭐Battle⭐')
+p('⭐Battle⭐\n')
 time.sleep(0.5)
-p('⭐Python⭐')
+p('⭐Python⭐\n')
 time.sleep(0.5)
-dramatic_effect('⭐Simulator!!⭐')
-time.sleep(1)
-start = input("Press 'ENTER' to start ")
+dramatic_effect('⭐Simulator!!⭐\n')
+time.sleep(1.5)
+start = input("Press 'ENTER' to start \n")
 time.sleep(0.5)
 dramatic_effect('Select your Pokémon:\n')
 dramatic_effect('Charizard 🦎🐦‍🔥\n')
@@ -39,26 +39,26 @@ dramatic_effect('Swampert 🦎💧\n')
 dramatic_effect('Toggekiss 🪽✨\n')
 pkmn1_selected = False
 while pkmn1_selected == False:
-    p1_pkmn = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
-    p1_pkmn = p1_pkmn.lower()
+    pkmn_choice = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
+    pkmn_choice = pkmn_choice.lower()
     time.sleep(1)
-    if p1_pkmn == 'info decidueye':
+    if pkmn_choice == 'info decidueye':
         dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon'")
         dramatic_effect("Decidueye uses Triple Arrow to increase the chance of landing critical hits, then attacks with powerful physical moves.")
         time.sleep(1)
-    elif p1_pkmn == 'info charizard':
+    elif pkmn_choice == 'info charizard':
         dramatic_effect("Charizard, #006, 'Flame Pokémon'")
         dramatic_effect("Charizard has a move for every situation. Find the right one to melt your oponent with super effective attacks.")
         time.sleep(1)
-    elif p1_pkmn == 'info Swampert':
+    elif pkmn_choice == 'info Swampert':
         dramatic_effect("Swampert, #260, 'Mud Fish Pokémon'")
         dramatic_effect("Using Curse to increase its physical stats, Swampert can resist and deliver hard hits.")
         time.sleep(1)
-    elif p1_pkmn == 'info togekiss':
+    elif pkmn_choice == 'info togekiss':
         dramatic_effect("Togekiss, #468, 'Jubelee Pokémon'")
         dramatic_effect("Togekiss can heal itself with Daining kiss and use Defog to bring the Pokémon's stats back to normal.")
         time.sleep(1)
-    elif p1_pkmn == 'decidueye':
+    elif pkmn_choice == 'decidueye':
         while True:  
             p1_pkmn_1 = 'decidueye'
             dramatic_effect('Choose a moveset\n')
@@ -72,7 +72,7 @@ while pkmn1_selected == False:
                 p1_pkmn_1_move2 = 'Steel Wing'
                 p1_pkmn_1_move3 = 'Brave Bird'
                 p1_pkmn_1_move4 = 'Triple Arrows'
-                dramatic_effect("Congrats Trainer 1, You rented 'Triple Arrows Hisuian Decidueye' succesfully.")
+                dramatic_effect("Congrats Trainer 1, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
                 pkmn1_selected = True
                 break
             elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'Swords Dance + Trailblaze':
@@ -80,33 +80,35 @@ while pkmn1_selected == False:
                 p1_pkmn_1_move2 = 'Swords Dance'
                 p1_pkmn_1_move3 = 'Trailblaze'
                 p1_pkmn_1_move4 = 'Sucker Punch'
-                dramatic_effect("Congrats Trainer 1, You rented 'Swords Dance Hisuian Decidueye' succesfully.")
+                dramatic_effect("Congrats Trainer 1, You rented 'Swords Dance Hisuian Decidueye' successfully.")
                 pkmn1_selected = True
                 break
             else:
                 dramatic_effect('Sorry, but I did not understand your comand, please try again')
-    elif p1_pkmn == 'charizard':
-        p1_pkmn_2 = 'charizard'
+    elif pkmn_choice == 'charizard':
+        p1_pkmn_1 = 'charizard'
         dramatic_effect('Choose a moveset\n')
         time.sleep(1.5)
         dramatic_effect('Special Attacker Toolbox [1]\n')
-        dramatic_effect('Belly Drum [2]\n')
+        dramatic_effect('Belly Drum (phisical) [2]\n')
         time.sleep(1.5)
-        p1_pkmn_2_moveset = input('')
-        p1_pkmn_2_moveset = p1_pkmn_2_moveset.lower()
+        p1_pkmn_1_moveset = input('')
+        p1_pkmn_1_moveset = p1_pkmn_1_moveset.lower()
         if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'belly Drum':
             p1_pkmn_1_move1 = 'Acrobatics'
             p1_pkmn_1_move2 = 'Flare Blitz'
             p1_pkmn_1_move3 = 'Belly Drum'
             p1_pkmn_1_move4 = 'Metal Claw'
-            dramatic_effect("Congrats Trainer 1, You rented 'Belly Drum' succesfully.")
+            dramatic_effect("Congrats Trainer 1, You rented 'Belly Drum' successfully.")
+            pkmn1_selected = True
             break
         elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'special attacker toolbox':
             p1_pkmn_1_move1 = 'Flametrhower'
             p1_pkmn_1_move2 = 'Ancient Power'
             p1_pkmn_1_move3 = 'Air Slash'
             p1_pkmn_1_move4 = 'Solar Beam'
-            dramatic_effect("Congrats Trainer 1, You rented 'Toolbox Charizard' succesfully.")
+            dramatic_effect("Congrats Trainer 1, You rented 'Toolbox Charizard' successfully.")
+            pkmn1_selected = True
             break
         else:
             dramatic_effect('Sorry, but I did not understand your comand, please try again')
