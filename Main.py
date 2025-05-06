@@ -4,13 +4,14 @@ import sys
 import random
 #Functions
 def p(strin):
-    print(strin)
+    print(f'{strin} \n')
     #This function makes it shorter to use "print", saving me valuable time.
 def dramatic_effect(txt):
     for letter in txt:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.04)
+    print('\n')
         #dramatic_effect uses a loop to type the characters in a string 1 by 1, making the program more visually appealing.
 
 def no_blank_fields_pls (field):
@@ -42,7 +43,7 @@ while pkmn1_selected == False:
     pkmn_choice = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
     pkmn_choice = pkmn_choice.lower()
     time.sleep(1)
-    if pkmn_choice == 'info decidueye':
+    if pkmn_choice == 'info decidueye':#This section is specially important as there is no graphic user interface. A brief description with emojis will help the user to visualise the Pokemon they are about to choose
         dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon'")
         dramatic_effect("Decidueye uses Triple Arrow to increase the chance of landing critical hits, then attacks with powerful physical moves.")
         time.sleep(1)
@@ -50,7 +51,7 @@ while pkmn1_selected == False:
         dramatic_effect("Charizard, #006, 'Flame Pokémon'")
         dramatic_effect("Charizard has a move for every situation. Find the right one to melt your oponent with super effective attacks.")
         time.sleep(1)
-    elif pkmn_choice == 'info Swampert':
+    elif pkmn_choice == 'info swampert':
         dramatic_effect("Swampert, #260, 'Mud Fish Pokémon'")
         dramatic_effect("Using Curse to increase its physical stats, Swampert can resist and deliver hard hits.")
         time.sleep(1)
@@ -58,7 +59,8 @@ while pkmn1_selected == False:
         dramatic_effect("Togekiss, #468, 'Jubelee Pokémon'")
         dramatic_effect("Togekiss can heal itself with Daining kiss and use Defog to bring the Pokémon's stats back to normal.")
         time.sleep(1)
-    elif pkmn_choice == 'decidueye':
+    elif pkmn_choice == 'decidueye': #Here is the part in which the user gets to choose the moveset of their Pokemon. 
+        #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the Pokemon's capacities above
         while True:  
             p1_pkmn_1 = 'decidueye'
             dramatic_effect('Choose a moveset\n')
@@ -112,5 +114,7 @@ while pkmn1_selected == False:
             break
         else:
             dramatic_effect('Sorry, but I did not understand your comand, please try again')
+            time.sleep(1)
     else:
         dramatic_effect('Sorry, but I did not understand your comand, please try again')
+        time.sleep(1)
