@@ -16,7 +16,7 @@ class Pokémon:
         self.type1 = type1
         self.type2 = type2
 
-n006 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
+Charizard = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
 
 class move:
     def __init__(self, move_name, base_power, effect, effect_chance, acc, type, crit_rate, category):
@@ -29,4 +29,15 @@ class move:
         self.category = category
         self.effect_chance = effect_chance
     
-Flamethrower = move('flamethrower, ')
+flamethrower = move('flamethrower', 90, False, False, 100, 'fire', 417, 'special')
+solar_beam = move('solar beam', 120, True, 100, 100, 'grass', 417, 'special')
+air_slash = ('air slash', 75, True, 30, 95, 'flying', 417, 'special')
+
+class moveset:
+    def __init__(self, move1, move2, move3, move4):
+        self.move1 = move1
+        self.move2 = move2
+        self.move3 = move3
+        self.move4 = move4
+
+toolbox_charizard = moveset('flamethrower', 'solar beam', 'air slash', 'ancient power')
