@@ -4,7 +4,7 @@
 #Imports
 #Functions
 #Main code
-class Pokémon:
+class Pokémon: #This class defines all the data about the Pokémon exept for its moves. It includes stats and typing
     def __init__(self, name, atk, dif, spd, spatk, spadif, hp, type1, type2):
         self.name = name
         self.atk = atk
@@ -16,9 +16,9 @@ class Pokémon:
         self.type1 = type1
         self.type2 = type2
 
-Charizard = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
+charizard = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
 
-class move:
+class move: #This class defines all the characteristics of a move, like base power, name, accuaracy, etc. Specific effects of each move will be coded separately.
     def __init__(self, move_name, base_power, effect, effect_chance, acc, type, crit_rate, category):
         self.move_name = move_name
         self.base_power = base_power
@@ -28,16 +28,28 @@ class move:
         self.crit_rate = crit_rate
         self.category = category
         self.effect_chance = effect_chance
-    
-flamethrower = move('flamethrower', 90, False, False, 100, 'fire', 417, 'special')
-solar_beam = move('solar beam', 120, True, 100, 100, 'grass', 417, 'special')
-air_slash = ('air slash', 75, True, 30, 95, 'flying', 417, 'special')
 
-class moveset:
+#Toolbox Charizard moves:    
+flamethrower = move('flamethrower', 90, False, 0, 100, 'fire', 417, 'special')
+solar_beam = move('solar beam', 120, True, 100, 100, 'grass', 417, 'special')
+air_slash = move('air slash', 75, True, 30, 95, 'flying', 417, 'special')
+ancient_power = move('ancient power', 60, True, 10, 100, 'rock', 417, 'special')
+
+#Belly drum Charizard moves:
+belly_drum = move('belly drum', 0, True, 100, 100, 'normal', 0, 'status')
+flare_blitz = move('flare blitz', 120, True, 100, 100, 'fire', 417, 'physical')
+acrobatics = move('acrobatics', 110, False, 0, 100, 'flying', 417, "physical")
+metal_claw = move('metal claw', 50, True, 10, 95, 'steel', 417, 'physical')
+
+
+class moveset: #I'm not sure if this class is even neccesary, but for now I will keep it around, just in case.
     def __init__(self, move1, move2, move3, move4):
         self.move1 = move1
         self.move2 = move2
         self.move3 = move3
         self.move4 = move4
+    def __str__(self):
+        return f"{self.move1} {self.move2} {self.move3} {self.move4}"
 
 toolbox_charizard = moveset('flamethrower', 'solar beam', 'air slash', 'ancient power')
+bellydrum_charizard = moveset('belly drum', 'flare blitz', 'acrobatics', 'metal claw')
