@@ -1,3 +1,7 @@
+#Title: Pokémon Battle Pyhon Simulator
+#Author: Ezequiel Ordo;ez
+#Version number: 0.1
+#Desctription: A Pokémon battle simulator coded in Python. In this videogame you will be able to challenge your friends to a Pokémon battle using 3 of 4 Pokémon, each Pokémon has 2 movesets of 4 moves each.
 #Imports
 import time
 import sys
