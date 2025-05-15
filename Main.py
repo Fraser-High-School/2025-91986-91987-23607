@@ -5,7 +5,6 @@
 #Imports
 import time
 import sys
-import random
 #Functions
 def p(strin):
     print(f'{strin} \n')

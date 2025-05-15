@@ -43,6 +43,7 @@ p2_active_pkmn = 'charizard'
 dramatic_effect(f" '{player1_name}: {p1_active_pkmn}, go!' ")
 time.sleep(1)
 dramatic_effect(f" '{player1_name}: {p1_active_pkmn}, go!' ")
+time.sleep(1)
 while True:
     charizard1.pkmn_checkup()
     charizard2.pkmn_checkup()
@@ -60,5 +61,21 @@ while True:
         dramatic_effect(f"{player2_name}'s {p2_active_pkmn} can no longer fight!!!")
         dramatic_effect(f"The winner is: 🏆🏆{player1_name}🏆🏆!!!")
         dramatic_effect('🎊🎊🎉🎉🎆🎆')
+    #Pokemon battle loop starts here
+    #p1_turnchoice = input(dramatic_effect(f'{p1_activepkmn} is your active Pokemon, switch active pkmn or fight?'))
+    dramatic_effect(f'{player1_name}, choose your move')
 
-    p1_turnchoice = input(dramatic_effect(f'Choose your move:'))
+    for listed_move in toolbox_charizard:
+        dramatic_effect(listed_move)
+        time.sleep(0.5)
+    p1_turnchoice = input('').lower()
+    while p1_turnchoice not in toolbox_charizard:
+        dramatic_effect('\x1B[3mYour Pokémon looks confused at you, as if it did not understand your comand\x1B[23m')
+        dramatic_effect(f'{player1_name}, choose your move')
+    for listed_move in toolbox_charizard:
+        dramatic_effect(listed_move)
+        time.sleep(0.5)
+    p1_turnchoice = input('').lower()
+    if p1_turnchoice in toolbox_charizard:
+        break
+    
