@@ -30,6 +30,9 @@ def dramatic_effect(txt):
         sys.stdout.flush()
         time.sleep(0.04)
     print('\n')
+
+def damage_calculation(move, attacker, objective):
+    damage = (2 * 50 / 5 + 2) * move.base_power * ()
 #Main
 player1_name = 'Ash'
 player2_name = 'George Lucas'
@@ -40,23 +43,21 @@ p1_pkmn1 = charizard1
 p2_pkmn_1 = charizard2
 p1_active_pkmn = 'charizard'
 p2_active_pkmn = 'charizard'
-dramatic_effect(f" '{player1_name}: {p1_active_pkmn}, go!' ")
+dramatic_effect(f"{player1_name}: '{p1_active_pkmn}, go!' ")
 time.sleep(1)
-dramatic_effect(f" '{player1_name}: {p1_active_pkmn}, go!' ")
+dramatic_effect(f"{player2_name}: '{p2_active_pkmn}, go!' ")
 time.sleep(1)
 while True:
-    charizard1.pkmn_checkup()
-    charizard2.pkmn_checkup()
-    if charizard1.state == "KO'd" and charizard2.state == "KO'd": #Victory and tie conditions use a function built into the Pokemon class itself
+    if charizard1.hp == 0 and charizard2.hp == 0: #Victory and tie conditions use a function built into the Pokemon class itself
         dramatic_effect("Eh!? What's this!!?")
         dramatic_effect("Both active Pokémon are knocked out, It's a tie!!!")
         dramatic_effect('🎊🎉🎆')
-    elif charizard1.state == "KO'd":
+    elif charizard1.hp == 0:
         dramatic_effect('The battle has come to an end!!!')
         dramatic_effect(f"{player1_name}'s {p1_active_pkmn} can no longer fight!!!")
         dramatic_effect(f"The winner is: 🏆🏆{player2_name}🏆🏆!!!")
         dramatic_effect('🎊🎊🎉🎉🎆🎆')
-    elif charizard2.state == "KO'd":
+    elif charizard2.hp == 0:
         dramatic_effect('The battle has come to an end!!!')
         dramatic_effect(f"{player2_name}'s {p2_active_pkmn} can no longer fight!!!")
         dramatic_effect(f"The winner is: 🏆🏆{player1_name}🏆🏆!!!")
@@ -71,11 +72,6 @@ while True:
     p1_turnchoice = input('').lower()
     while p1_turnchoice not in toolbox_charizard:
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, as if it did not understand your comand\x1B[23m')
-        dramatic_effect(f'{player1_name}, choose your move')
-    for listed_move in toolbox_charizard:
-        dramatic_effect(listed_move)
-        time.sleep(0.5)
-    p1_turnchoice = input('').lower()
-    if p1_turnchoice in toolbox_charizard:
+        p1_turnchoice = input(dramatic_effect(f'{player1_name}, choose your move')).lower()
+    if 
         break
-    

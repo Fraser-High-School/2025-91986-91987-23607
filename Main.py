@@ -5,6 +5,7 @@
 #Imports
 import time
 import sys
+from Charizard import charizard1
 #Functions
 def p(strin):
     print(f'{strin} \n')
@@ -43,8 +44,7 @@ dramatic_effect('Swampert 🦎💧\n')
 dramatic_effect('Toggekiss 🪽✨\n')
 pkmn1_selected = False
 while pkmn1_selected == False:
-    pkmn_choice = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
-    pkmn_choice = pkmn_choice.lower()
+    pkmn_choice = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. ")).lower()
     time.sleep(1)
     if pkmn_choice == 'info decidueye':#This section is specially important as there is no graphic user interface. A brief description with emojis will help the user to visualise the Pokemon they are about to choose
         dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon'")
@@ -68,8 +68,8 @@ while pkmn1_selected == False:
             p1_pkmn_1 = 'decidueye'
             dramatic_effect('Choose a moveset\n')
             time.sleep(1.5)
-            dramatic_effect('Swords Dance + Trailblaze [1]\n')
-            dramatic_effect('Triple Arrows + Leaf Blade [2]\n')
+            dramatic_effect('Swords Dance + Trailblaze [1]')
+            dramatic_effect('Triple Arrows + Leaf Blade [2]')
             time.sleep(1.5)
             p1_pkmn_1_moveset = input('')
             if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'Triple Arrows + Leaf Blade':  
@@ -91,8 +91,8 @@ while pkmn1_selected == False:
             else:
                 dramatic_effect('Sorry, but I did not understand your comand, please try again')
     elif pkmn_choice == 'charizard':
-        p1_pkmn_1 = 'charizard'
-        dramatic_effect('Choose a moveset\n')
+        p1_pkmn_1 = charizard1
+        dramatic_effect('Choose a moveset')
         time.sleep(1.5)
         dramatic_effect('Special Attacker Toolbox [1]\n')
         dramatic_effect('Belly Drum (phisical) [2]\n')

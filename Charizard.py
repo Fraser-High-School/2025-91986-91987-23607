@@ -15,9 +15,6 @@ class Pokémon: #This class defines all the data about the Pokémon exept for it
         self.hp = hp
         self.type1 = type1
         self.type2 = type2
-    def pkmn_checkup(self):
-        if self.hp <= 0:
-            self.state = "KO'd"
 
 charizard1 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
 charizard2 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
