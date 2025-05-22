@@ -5,13 +5,13 @@
 #Functions
 #Main code
 class Pokémon: #This class defines all the data about the Pokémon exept for its moves. It includes stats and typing
-    def __init__(self, name, atk, dif, spd, spatk, spadif, hp, type1, type2):
+    def __init__(self, name, atk, dif, spd, spatk, spdif, hp, type1, type2):
         self.name = name
         self.atk = atk
         self.dif = dif
         self.spd = spd
         self.spatk = spatk
-        self.spadif = spadif
+        self.spdif = spdif
         self.hp = hp
         self.type1 = type1
         self.type2 = type2
@@ -20,12 +20,12 @@ charizard1 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying
 charizard2 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, 'fire', 'flying')
 
 class move: #This class defines all the characteristics of a move, like base power, name, accuaracy, etc. Specific effects of each move will be coded separately.
-    def __init__(self, move_name, base_power, effect, effect_chance, acc, type, crit_rate, category):
+    def __init__(self, move_name, base_power, effect, effect_chance, acc, ptype, crit_rate, category):
         self.move_name = move_name
         self.base_power = base_power
         self.effect = effect
         self.acc = acc
-        self.type = type
+        self.ptype = ptype
         self.crit_rate = crit_rate
         self.category = category
         self.effect_chance = effect_chance

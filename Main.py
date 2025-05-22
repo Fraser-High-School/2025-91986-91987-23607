@@ -73,18 +73,10 @@ while pkmn1_selected == False:
             time.sleep(1.5)
             p1_pkmn_1_moveset = input('')
             if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'Triple Arrows + Leaf Blade':  
-                p1_pkmn_1_move1 = 'Leaf Blade'
-                p1_pkmn_1_move2 = 'Steel Wing'
-                p1_pkmn_1_move3 = 'Brave Bird'
-                p1_pkmn_1_move4 = 'Triple Arrows'
                 dramatic_effect("Congrats Trainer 1, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
                 pkmn1_selected = True
                 break
             elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'Swords Dance + Trailblaze':
-                p1_pkmn_1_move1 = 'Close Combat'
-                p1_pkmn_1_move2 = 'Swords Dance'
-                p1_pkmn_1_move3 = 'Trailblaze'
-                p1_pkmn_1_move4 = 'Sucker Punch'
                 dramatic_effect("Congrats Trainer 1, You rented 'Swords Dance Hisuian Decidueye' successfully.")
                 pkmn1_selected = True
                 break
@@ -100,18 +92,10 @@ while pkmn1_selected == False:
         p1_pkmn_1_moveset = input('')
         p1_pkmn_1_moveset = p1_pkmn_1_moveset.lower()
         if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'belly Drum':
-            p1_pkmn_1_move1 = 'Acrobatics'
-            p1_pkmn_1_move2 = 'Flare Blitz'
-            p1_pkmn_1_move3 = 'Belly Drum'
-            p1_pkmn_1_move4 = 'Metal Claw'
             dramatic_effect("Congrats Trainer 1, You rented 'Belly Drum' successfully.")
             pkmn1_selected = True
             break
         elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'special attacker toolbox':
-            p1_pkmn_1_move1 = 'Flametrhower'
-            p1_pkmn_1_move2 = 'Ancient Power'
-            p1_pkmn_1_move3 = 'Air Slash'
-            p1_pkmn_1_move4 = 'Solar Beam'
             dramatic_effect("Congrats Trainer 1, You rented 'Toolbox Charizard' successfully.")
             pkmn1_selected = True
             break
@@ -121,3 +105,4 @@ while pkmn1_selected == False:
     else:
         dramatic_effect('Sorry, but I did not understand your comand, please try again')
         time.sleep(1)
+import Battle!
