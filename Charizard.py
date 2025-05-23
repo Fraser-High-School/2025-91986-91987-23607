@@ -26,7 +26,7 @@ class move: #This class defines all the characteristics of a move, like base pow
         self.effect = effect
         self.acc = acc
         self.ptype = ptype
-        self.crit_rate = crit_rate
+        self.crit_rate = crit_rate #4.17% is the base critical hit chance of most moves, that's why most moves will have this value set to 417
         self.category = category
         self.effect_chance = effect_chance
 
