@@ -2,10 +2,12 @@
 #Date created 12/5/25
 #I will put the combat in this file. This file will use resources from Charizard.py and other Pokémon files
 #Imports
+pip install playsound
 import random
 import sys
 import time
 from Charizard import *
+from playsound import playsound
 #Lists
 options = ['Battle', 'Switch']
 #functions
@@ -16,25 +18,30 @@ def dramatic_effect(txt):
         time.sleep(0.04)
     print('\n')
 #crit_hit is an adaptation of how critical hits work in the original game. most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
+#This function is a simplified version of the critical hit system used in actual Pokémon games.
 def crit_hit(move):
     chance = random.randit(10000)
     if chance <= 417:
         return 1.5
-    if (move).crit_rate == 1250 and chance <= 1250:
+    elif (move).crit_rate == 1250 and chance <= 1250:
         return 1.5
-
+    else:
+        return 1.0
+#"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
 def stab(move, attacker):
-    if any(x >= 2 for x in ((attacker).type1, B, C, D)):
+    if any(x >= 2 for x in ((attacker).type1, (attacker)type2, (move).ptype)):
+        return 1.5
 #Damage calculation explained:
     #50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
-    #
-def damage_calculation(move, attacker, objective):
+    #This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
+def damage_calculation(move, attacker, target):
     if (move).category == 'special'
-        damage = ((2 * 50 / 5 + 2) * (move).base_power * ((atacker).spatk / (objective).spdif) / 50 + 2) * crit_hit(move) #* super_effective * stab
+        damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) #*super_effective
+        damage = round(damage)
         return damage
     elif (move).category == 'physical'
-        if (move).category == 'special'
-        damage = ((2 * 50 / 5 + 2) * (move).base_power * ((atacker).spatk / (objective).spdif) / 50 + 2) * crit_hit(move) #* super_effective * stab
+        damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.atk / target.dif) / 50 + 2) * crit_hit(move) stab(move, attacker) #*super_effective
+        damage = round(damage)
         return damage
 #Main
 player1_name = 'Ash'

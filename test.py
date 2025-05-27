@@ -1,15 +1,7 @@
-import sys
-import time
+# import required module
+pip install playsound==1.2.2
+from playsound import playsound
 
-def p(strin):
-    print(f'{strin} \n')
-
-def dramatic_effect(txt):
-    for letter in txt:
-        sys.stdout.write(letter)
-        sys.stdout.flush()
-        time.sleep(0.04)
-    print('\n')
-
-dramatic_effect('unfg')
-dramatic_effect('dasa')
+# for playing note.wav file
+playsound('https://archive.org/details/pokemon-sv-ost-rip/Battle!+(Nemona).mp3')
+print('playing sound using playsound')
