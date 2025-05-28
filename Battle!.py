@@ -2,7 +2,6 @@
 #Date created 12/5/25
 #I will put the combat in this file. This file will use resources from Charizard.py and other Pokémon files
 #Imports
-pip install playsound
 import random
 import sys
 import time
