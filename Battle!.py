@@ -28,17 +28,17 @@ def crit_hit(move):
         return 1.0
 #"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
 def stab(move, attacker):
-    if any(x >= 2 for x in ((attacker).type1, (attacker)type2, (move).ptype)):
+    if any(move.ptype == attacker.type1 or move.ptype == attacker.type2 for x in (attacker.type1, attacker.type2, move.ptype)):
         return 1.5
 #Damage calculation explained:
     #50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
     #This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
 def damage_calculation(move, attacker, target):
-    if (move).category == 'special'
+    if move.category == 'special'
         damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) #*super_effective
         damage = round(damage)
         return damage
-    elif (move).category == 'physical'
+    elif move.category == 'physical'
         damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.atk / target.dif) / 50 + 2) * crit_hit(move) stab(move, attacker) #*super_effective
         damage = round(damage)
         return damage
