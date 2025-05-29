@@ -23,7 +23,9 @@ def super_effective(move, target):
         return 0.5
     elif move.ptype == 'grass' and target.name == 'charizard':
         return 0.25
-    elif move.ptype == 'fairy' and target.type1 ==
+    #Fairy type interactions
+    elif move.ptype == 'fairy' and target.type1 == 'fairy' or move.ptype == 'fairy' and target.type1 == 'fire':
+        return 
     elif move.ptype == 'flying' and target.type1 ==
     elif move.ptype == 'fire' and target.type1 ==
     elif move.ptype == 'fire' and target.type1 ==
