@@ -6,6 +6,8 @@
 import time
 import sys
 from Charizard import charizard1
+#Lists
+taken[]
 #Functions
 def p(strin):
     print(f'{strin} \n')
@@ -37,7 +39,9 @@ dramatic_effect('⭐Simulator!!⭐\n')
 time.sleep(1.5)
 start = input("Press 'ENTER' to start \n")
 time.sleep(0.5)
-dramatic_effect('Select your Pokémon:\n')
+player1_name = input('Introduce the name of player 1: ')
+player2_name = input('Introduce the name of player 2/CPU trainer: ')
+dramatic_effect(f'{player1_name}, select your Pokémon:\n')
 dramatic_effect('Charizard 🦎🐦‍🔥\n')
 dramatic_effect('Hisuian Decidueye 🍃🦉\n')
 dramatic_effect('Swampert 🦎💧\n')
@@ -67,6 +71,7 @@ while pkmn1_selected == False:
         #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the Pokemon's capacities above
         while True:  
             p1_pkmn_1 = 'decidueye'
+            taken.append(decidueye1)
             dramatic_effect('Choose a moveset\n')
             time.sleep(1.5)
             dramatic_effect('Swords Dance + Trailblaze [1]')
@@ -85,6 +90,7 @@ while pkmn1_selected == False:
                 dramatic_effect('Sorry, but I did not understand your comand, please try again')
     elif pkmn_choice == 'charizard':
         p1_pkmn_1 = charizard1
+        taken.append(charizard1)
         dramatic_effect('Choose a moveset')
         time.sleep(1.5)
         dramatic_effect('Special Attacker Toolbox [1]\n')
@@ -97,6 +103,7 @@ while pkmn1_selected == False:
             pkmn1_selected = True
             break
         elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'special attacker toolbox':
+            pkmn1_equals = dict(p1_pkmn1 = charizard1, p1_pkmn1_moveset = toolbox_charizard)
             dramatic_effect("Congrats Trainer 1, You rented 'Toolbox Charizard' successfully.")
             pkmn1_selected = True
             break
