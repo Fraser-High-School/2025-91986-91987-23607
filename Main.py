@@ -9,9 +9,10 @@ from Charizard import charizard1
 #Lists
 taken[]
 #Functions
-def p(strin):
+def p(strin): #This function makes it shorter to use "print", saving me valuable time.
+
     print(f'{strin} \n')
-    #This function makes it shorter to use "print", saving me valuable time.
+    
 def dramatic_effect(txt):
     for letter in txt:
         sys.stdout.write(letter)
@@ -48,7 +49,8 @@ dramatic_effect('Swampert 🦎💧\n')
 dramatic_effect('Toggekiss 🪽✨\n')
 pkmn1_selected = False
 while pkmn1_selected == False:
-    pkmn_choice = input(dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. "))
+    dramatic_effect("Enter the name of the Pokémon you want to choose or write 'info <name of the Pokémon>' to know more about a certain Pokémon. ")
+    pkmn_choice = input('')
     pkmn_choice = pkmn_choice.lower()
     time.sleep(1)
     if pkmn_choice == 'info decidueye':#This section is specially important as there is no graphic user interface. A brief description with emojis will help the user to visualise the Pokemon they are about to choose
