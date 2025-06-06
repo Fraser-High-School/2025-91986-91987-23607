@@ -5,6 +5,7 @@
 import random
 import sys
 import time
+import winsound
 from Charizard import *
 #Lists
 options = ['Battle', 'Switch']
@@ -96,19 +97,17 @@ def super_effective(move, target):
     else:
         return 1
 
-#Damage of a move always varies between 100% and 85%
-def skill_issue:
-
 #Damage calculation explained:
     #50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
     #This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
+    #Damage of a move always varies between 100% and 85%
 def damage_calculation(move, attacker, target):
     if move.category == 'special'
         damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
         return damage
     elif move.category == 'physical'
-        damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.atk / target.dif) / 50 + 2) * crit_hit(move) stab(move, attacker) * super_effective(move, target)
+        damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.atk / target.dif) / 50 + 2) * crit_hit(move) stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
         return damage
 
@@ -125,6 +124,7 @@ p2_active_pkmn = 'charizard'
 dramatic_effect(f"{player1_name}: '{p1_active_pkmn}, go!' ")
 time.sleep(1)
 dramatic_effect(f"{player2_name}: '{p2_active_pkmn}, go!' ")
+winsound.PlaySound('battle music.wav', winsound.SND_ASYNC)
 time.sleep(1)
 while charizard1.hp > 0 or charizard2.hp > 0:
     #Pokemon battle loop starts here
