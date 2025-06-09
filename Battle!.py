@@ -1,12 +1,8 @@
-#This is the file which contains the Pokémon battle itself
-#Date created 12/5/25
-#I will put the combat in this file. This file will use resources from Charizard.py and other Pokémon files
 #Imports
 import random
 import sys
 import time
-import winsound
-from Charizard import *
+from Pokédex import *
 #Lists
 options = ['Battle', 'Switch']
 #functions
@@ -17,9 +13,8 @@ def dramatic_effect(txt):
         time.sleep(0.04)
     print('\n')
 #crit_hit is an adaptation of how critical hits work in the original game. most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
-#This function is a simplified version of the critical hit system used in actual Pokémon games.
 def crit_hit(move):
-    chance = random.randit(10000)
+    chance = random.randint(1, 10000)
     if chance <= 417:
         return 1.5
     elif (move).crit_rate == 1250 and chance <= 1250:
@@ -102,12 +97,12 @@ def super_effective(move, target):
     #This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
     #Damage of a move always varies between 100% and 85%
 def damage_calculation(move, attacker, target):
-    if move.category == 'special'
-        damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
+    if move.category == 'special':
+        damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
         return damage
-    elif move.category == 'physical'
-        damage = ((2 * 50 / 5 + 2) * move.base_power * (atacker.atk / target.dif) / 50 + 2) * crit_hit(move) stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
+    elif move.category == 'physical':
+        damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.atk / target.dif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
         return damage
 

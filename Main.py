@@ -5,9 +5,10 @@
 #Imports
 import time
 import sys
-from Charizard import charizard1
+from Pokédex import *
 #Lists
 taken[]
+decidueye_movesets = ['1', 'Swords Dance + Trailblaze', '2', 'Triple Arrows + Leaf Blade']
 #Functions
 def p(strin): #This function makes it shorter to use "print", saving me valuable time.
 
@@ -22,7 +23,7 @@ def dramatic_effect(txt):
         #dramatic_effect uses a loop to type the characters in a string 1 by 1, making the program more visually appealing.
 
 def no_blank_fields_pls (field):
-    '''If the user does not fill a field, this function will detect it and ask them to do it'''
+    #If the user does not fill a field, this function will detect it and ask them to do it
     while field == '' or field.isalpha() == False:
         print("Please, only introduce words in this field.")
         time.sleep(0.5)
@@ -71,25 +72,28 @@ while pkmn1_selected == False:
         time.sleep(1)
     elif pkmn_choice == 'decidueye': #Here is the part in which the user gets to choose the moveset of their Pokemon. 
         #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the Pokemon's capacities above
-        while True:  
-            p1_pkmn_1 = 'decidueye'
-            taken.append(decidueye1)
-            dramatic_effect('Choose a moveset\n')
-            time.sleep(1.5)
-            dramatic_effect('Swords Dance + Trailblaze [1]')
-            dramatic_effect('Triple Arrows + Leaf Blade [2]')
-            time.sleep(1.5)
+        p1_pkmn_1 = 'decidueye'
+        taken.append(decidueye1)
+        dramatic_effect('Choose a moveset\n')
+        time.sleep(1.5)
+        for movset in decidueye_movesets:
+            print(movset)
+            ('\n')
+            time.sleep(1)
+        time.sleep(0.5)
+        p1_pkmn_1_moveset = input('')
+        while p1_pkmn_1_moveset not in decidueye movesets:
+            dramatic_effect('Sorry, but I did not understand your comand, please try again')
             p1_pkmn_1_moveset = input('')
-            if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'Triple Arrows + Leaf Blade':  
-                dramatic_effect("Congrats Trainer 1, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
-                pkmn1_selected = True
-                break
-            elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'Swords Dance + Trailblaze':
-                dramatic_effect("Congrats Trainer 1, You rented 'Swords Dance Hisuian Decidueye' successfully.")
-                pkmn1_selected = True
-                break
-            else:
-                dramatic_effect('Sorry, but I did not understand your comand, please try again')
+        if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'Triple Arrows + Leaf Blade':  
+            dramatic_effect("Congrats Trainer 1, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
+            pkmn1_selected = True
+            break
+        elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'Swords Dance + Trailblaze':
+            dramatic_effect("Congrats Trainer 1, You rented 'Swords Dance Hisuian Decidueye' successfully.")
+            pkmn1_selected = True
+            break
+
     elif pkmn_choice == 'charizard':
         p1_pkmn_1 = charizard1
         taken.append(charizard1)
