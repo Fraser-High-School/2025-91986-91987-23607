@@ -74,7 +74,7 @@ while pkmn1_selected == False:
         #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the Pokemon's capacities above
         p1_pkmn_1 = 'decidueye'
         taken.append(decidueye1)
-        dramatic_effect('Choose a moveset\n')
+        dramatic_effect('Choose a moveset')
         time.sleep(1.5)
         for movset in decidueye_movesets:
             print(movset)
