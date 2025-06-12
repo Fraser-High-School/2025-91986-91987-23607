@@ -29,68 +29,74 @@ def stab(move, attacker):
 
 #super_effective is an adaptation of how super effective hits work in the game. I feel like this function could be optimised, but I don't know if I have the time, and it seems to work well
 def super_effective(move, target):
+    effectiveness = 1
     #Fire type interactions
     if move.ptype == 'fire' and target.type1 == 'grass':
-        return 2
-    elif move.ptype == 'fire' and target.type1 == 'water' or move.ptype == 'fire' and target.type1 == 'fire':
-        return 0.5
+        effectiveness = effectiveness * 2
+    if move.ptype == 'fire' and target.type1 == 'water' or move.ptype == 'fire' and target.type1 == 'fire' or move.ptype == 'fire' and target.type1 == 'water':
+        effectiveness = effectiveness * 0.5
     #Dark type interactions
-    elif move.ptype == 'dark' and target.type1 == 'fairy' or move.ptype == 'dark' and target.type2 == 'fighting':
-        return 0.5
+    if move.ptype == 'dark' and target.type1 == 'fairy' or move.ptype == 'dark' and target.type2 == 'fighting':
+        effectiveness = effectiveness * 0.5
     #Water type interactions
-    elif move.ptype == 'water' and target.type1 == 'fire':
-        return 2
-    elif move.ptype == 'water' and target.type1 == 'water' or move.ptype == 'water' and target.type1 == 'grass':
-        return 0.5
+    if move.ptype == 'water' and target.type1 == 'fire':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'water' and target.type1 == 'water' or move.ptype == 'water' and target.type1 == 'grass':
+        effectiveness = effectiveness * 0.5
     #Grass type interactions
-    elif move.ptype == 'grass' and target.name == 'swampert':
-        return 4
-    elif move.ptype == 'grass' and target.type1 == 'grass' or target.name == 'togekiss':
-        return 0.5
-    elif move.ptype == 'grass' and target.name == 'charizard':
-        return 0.25
+    if move.ptype == 'grass' and target.type1 == 'water':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'grass' and target.type1 == 'grass' or move.ptype == 'grass' and target.type2 == 'flying' or move.ptype == 'grass' and target.type1 == 'fire':
+        effectiveness = effectiveness * 0.5
+    if move.ptype == 'grass' and target.type2 == 'ground':
+        effectiveness = effectiveness * 2
     #Fairy type interactions
-    elif move.ptype == 'fairy' and target.type1 == 'fairy' or move.ptype == 'fairy' and target.type1 == 'fire':
-        return 0.5
-    elif move.ptype == 'fairy' and target.type2 == 'fighting':
-        return 2
+    if move.ptype == 'fairy' and target.type1 == 'fairy' or move.ptype == 'fairy' and target.type1 == 'fire':
+        effectiveness = effectiveness * 0.5
+    if move.ptype == 'fairy' and target.type2 == 'fighting':
+        effectiveness = effectiveness * 2
     #Flying type interactions
-    elif move.ptype == 'flying' and target.name == 'decidueye':
-        return 4
+    if move.ptype == 'flying' and target.type1 == 'grass':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'flying' and target.type2 == 'fighting':
+        effectiveness = effectiveness * 2
     #ground type interactions
-    elif move.ptype == 'ground' and target.type2 == 'flying':
+    if move.ptype == 'ground' and target.type2 == 'flying':
         return 0
-    elif move.ptype == 'ground' and target.type1 == 'grass':
-        return 0.5
+    if move.ptype == 'ground' and target.type1 == 'grass':
+        effectiveness = effectiveness * 0.5
     #Steel type interactions
-    elif move.ptype == 'steel' and target.type1 == 'fairy':
-        return 2
-    elif move.ptype == 'steel' and target.type1 == 'fire' or move.ptype == 'steel' and target.type2 == 'fighting' or move.ptype == 'steel' and target.type1 == 'water':
-        return 0.5
+    if move.ptype == 'steel' and target.type1 == 'fairy':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'steel' and target.type1 == 'fire' or move.ptype == 'ste' and target.type2 == 'fighting' or move.ptype == 'ste' and target.type1 == 'water':
+        effectiveness = effectiveness * 0.5
     #Rock type interactions
-    elif move.ptype == 'rock' and target.type1 == 'water':
-        return 0.5
-    elif move.ptype == 'rock' and target.name == 'charizard':
-        return 4
-    elif move.ptype == 'rock' and target.name == 'togekiss':
-        return 2
-    elif move.ptype == 'rock' and target.name == 'decidueye':
-        return 0.25
+    if move.ptype == 'rock' and target.type1 == 'water':
+        effectiveness = effectiveness * 0.5
+    if move.ptype == 'rock' and target.type1 == 'fire':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'rock' and target.type2 == 'flying':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'rock' and target.type2 == 'fighting':
+        effectiveness = effectiveness * 0.5
+    if move.ptype == 'rock' and target.type1 == 'grass':
+        effectiveness = effectiveness * 0.5
     #Fighting type interactions
-    elif move.ptype == 'fighting' and target.type1 == 'fairy' or move.ptype == 'fighting' and target.type1 == 'grass':
-        return 0.5
+    if move.ptype == 'fighting' and target.type1 == 'fairy' or move.ptype == 'fighting' and target.type1 == 'grass':
+        effectiveness = effectiveness * 0.5
     #Ice type interactions
-    elif move.ptype == 'ice' and target.name == 'Togekiss':
-        return 2
+    if move.ptype == 'ice' and target.type2 == 'flying':
+        effectiveness = effectiveness * 2
+    if move.ptype == 'ice' and target.type1 == 'fire':
+        effectiveness = effectiveness * 0.5
     #electric type interactions
-    elif move.ptype == 'electric' and target.type1 == 'grass':
-        return 0.5
-    elif move.ptype == 'electric' and target.type2 == 'ground':
+    if move.ptype == 'electric' and target.type1 == 'grass':
+        effectiveness = effectiveness * 0.5
+    if move.ptype == 'electric' and target.type2 == 'ground':
         return 0
-    elif move.ptype == 'electric' and target.type2 == 'flying':
-        return 2
-    else:
-        return 1
+    if move.ptype == 'electric' and target.type2 == 'flying':
+        effectiveness = effectiveness * 2
+    return effectiveness
 
 #Damage calculation explained:
     #50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
