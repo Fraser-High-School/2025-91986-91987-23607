@@ -30,40 +30,40 @@ def super_effective(move, target):
     if move.ptype == 'flying' and 'grass' or 'fighting' in target.typing:
         effectiveness = effectiveness * 2
     #ground type interactions
-    if move.ptype == 'ground' and == 'flying':
+    if move.ptype == 'ground' and 'flying' in target.typing:
         return 0
-    if move.ptype == 'ground' and 'grass':
+    if move.ptype == 'ground' and 'grass' in target.typing:
         effectiveness = effectiveness * 0.5
     #Steel type interactions
-    if move.ptype == 'steel' and 'fairy':
+    if move.ptype == 'steel' and 'fairy' in target.typing:
         effectiveness = effectiveness * 2
-    if move.ptype == 'steel' and 'fire' or move.ptype == 'ste' and == 'fighting' or move.ptype == 'ste' and 'water':
+    if move.ptype == 'steel' and 'fire' or 'fighting' or 'water' in target.typing:
         effectiveness = effectiveness * 0.5
     #Rock type interactions
-    if move.ptype == 'rock' and 'water':
+    if move.ptype == 'rock' and 'water' or 'grass' in target.typing:
         effectiveness = effectiveness * 0.5
-    if move.ptype == 'rock' and 'fire':
+    if move.ptype == 'rock' and 'fire' in target.typing:
         effectiveness = effectiveness * 2
-    if move.ptype == 'rock' and == 'flying':
+    if move.ptype == 'rock' and 'flying' in target.typing:
         effectiveness = effectiveness * 2
-    if move.ptype == 'rock' and == 'fighting':
-        effectiveness = effectiveness * 0.5
-    if move.ptype == 'rock' and 'grass':
+    if move.ptype == 'rock' and 'fighting' in target.typing:
         effectiveness = effectiveness * 0.5
     #Fighting type interactions
-    if move.ptype == 'fighting' and 'fairy' or move.ptype == 'fighting' and 'grass':
+    if move.ptype == 'fighting' and 'fairy' or 'grass' in target.typing:
         effectiveness = effectiveness * 0.5
+    if move.ptype == 'fighting' and 'flying' in target.typing:
+         effectiveness = effectiveness * 0.5
     #Ice type interactions
-    if move.ptype == 'ice' and == 'flying':
+    if move.ptype == 'ice' and 'flying' in target.typing:
         effectiveness = effectiveness * 2
-    if move.ptype == 'ice' and 'fire':
+    if move.ptype == 'ice' and 'fire' in target.typing:
         effectiveness = effectiveness * 0.5
     #electric type interactions
-    if move.ptype == 'electric' and 'grass':
+    if move.ptype == 'electric' and 'grass' in target.typing:
         effectiveness = effectiveness * 0.5
-    if move.ptype == 'electric' and == 'ground':
+    if move.ptype == 'electric' and 'ground' in target.typing:
         return 0
-    if move.ptype == 'electric' and == 'flying':
+    if move.ptype == 'electric' and 'flying' in target.typing:
         effectiveness = effectiveness * 2
     return effectiveness
 #Main

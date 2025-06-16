@@ -24,7 +24,7 @@ def crit_hit(move):
 
 #"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
 def stab(move, attacker):
-    if any(move.ptype == attacker.type1 or move.ptype == attacker.type2 for x in (attacker.type1, attacker.type2, move.ptype)):
+    if move.ptype in attacker.typing:
         return 1.5
 
 #super_effective is an adaptation of how super effective hits work in the game. I feel like this function could be optimised, but I don't know if I have the time, and it seems to work well
