@@ -6,12 +6,15 @@
 import time
 import sys
 from Pokédex import *
-#Lists
+#Lists and dictionaries
 taken[]
 decidueye_movesets = ['1', 'Swords Dance + Trailblaze', '2', 'Triple Arrows + Leaf Blade']
+charizard_movesets =
+pokémon_call ={
+    
+}
 #Functions
 def p(strin): #This function makes it shorter to use "print", saving me valuable time.
-
     print(f'{strin} \n')
     
 def dramatic_effect(txt):
@@ -43,7 +46,7 @@ start = input("Press 'ENTER' to start \n")
 time.sleep(0.5)
 player1_name = input('Introduce the name of player 1: ')
 player2_name = input('Introduce the name of player 2/CPU trainer: ')
-dramatic_effect(f'{player1_name}, select your Pokémon:\n')
+dramatic_effect(f'{player1_name}, select your first Pokémon:\n')
 dramatic_effect('Charizard 🦎🐦‍🔥\n')
 dramatic_effect('Hisuian Decidueye 🍃🦉\n')
 dramatic_effect('Swampert 🦎💧\n')
@@ -70,15 +73,15 @@ while pkmn1_selected == False:
         dramatic_effect("Togekiss, #468, 'Jubelee Pokémon'")
         dramatic_effect("Togekiss can heal itself with Daining kiss and use Defog to bring the Pokémon's stats back to normal.")
         time.sleep(1)
-    elif pkmn_choice == 'decidueye': #Here is the part in which the user gets to choose the moveset of their Pokemon. 
+    elif pkmn_choice == 'decidueye': #Here is the part in which the user gets to choose the moveset of their Pokemon.
         #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the Pokemon's capacities above
         p1_pkmn_1 = 'decidueye'
         taken.append(decidueye1)
+        pokémon_call.update{[active_pokemon : decidueye1]}
         dramatic_effect('Choose a moveset')
         time.sleep(1.5)
         for movset in decidueye_movesets:
-            print(movset)
-            ('\n')
+            p(movset)
             time.sleep(1)
         time.sleep(0.5)
         p1_pkmn_1_moveset = input('')
@@ -86,11 +89,11 @@ while pkmn1_selected == False:
             dramatic_effect('Sorry, but I did not understand your comand, please try again')
             p1_pkmn_1_moveset = input('')
         if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'Triple Arrows + Leaf Blade':  
-            dramatic_effect("Congrats Trainer 1, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
+            dramatic_effect(f"Congrats {player1_name}, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
             pkmn1_selected = True
             break
         elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'Swords Dance + Trailblaze':
-            dramatic_effect("Congrats Trainer 1, You rented 'Swords Dance Hisuian Decidueye' successfully.")
+            dramatic_effect(f"Congrats {player1_name}, You rented 'Swords Dance Hisuian Decidueye' successfully.")
             pkmn1_selected = True
             break
 
