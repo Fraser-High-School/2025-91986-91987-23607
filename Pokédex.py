@@ -42,6 +42,21 @@ flare_blitz = move('flare blitz', 120, True, 100, 100, 'fire', 417, 'physical')
 acrobatics = move('acrobatics', 110, False, 0, 100, 'flying', 417, "physical")
 metal_claw = move('metal claw', 50, True, 10, 95, 'steel', 417, 'physical')
 
+#Triple Arrows Decidueye moves
+triple_arrows = move('triple arrows', 90, True, 50, 100, 'fighting', 1250, 'physical')
+leaf_blade = move('leaf blade', 90, False, 0, 100, 'grass', 1250, 'physical')
+brave_bird = move('brave bird', 120, True, 100, 100, 'flying', 417, 'physical')
+steel_wing = move('steel wing', 70, True, 10, 90, 'steel', 417, 'physical')
+
+#Swords Dance Decidueye moves
+swords_dance = move('swords dance', 0, True, 100, 100, 'normal', 0, 'status')
+sucker_punch = move('sucker punch', 70, True, 50, 100, 'dark', 417, 'physical')
+trailblaze = move('trailblaze', 50, True, 100, 100, 'grass', 417, 'physical')
+close_combat = move('close combat', 120, True, 100, 100, 'fighting', 417, 'physical')
+
+#
 #List of the movesets
 toolbox_charizard = ['flamethrower', 'solar beam', 'air slash', 'ancient power']
 bellydrum_charizard = ['belly drum', 'flare blitz', 'acrobatics', 'metal claw']
+
+triplearrows_decidueye = ['triple arrows', 'leaf blade', 'brave bird', 'steel wing']

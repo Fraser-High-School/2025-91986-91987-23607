@@ -5,7 +5,6 @@ import time
 from Pokédex import *
 from Main import *
 #Lists
-options = ['Battle', 'Switch']
 #functions
 #dramatic_effect prints one by one, which is very neat 
 def dramatic_effect(txt):
@@ -143,7 +142,7 @@ def super_effective(move, target):
 def damage_calculation(move, attacker, target):
     security_check = hasattr(attacker, 'hp')
     if security_check == False:
-        return "attacker (if any) has no hp attribute, thus it can't be used as a Pokémon" #Error message to detect if a Pokémon is being used as an attacker in the damage calculation
+        return "attacker (if any) has no hp attribute, thus, it is not a Pokémon" #Error message to detect if a Pokémon is being used as an attacker in the damage calculation
     if move.category == 'special':
         damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
@@ -156,13 +155,12 @@ def damage_calculation(move, attacker, target):
 #Main
 player1_name = 'Ash'
 player2_name = 'George Lucas'
-#I decided to start with a 1v1 Charizard duel first, and then expand it to support more Pokemon and modes
 dramatic_effect(f'A battle has started between {player1_name} and {player2_name}')
 time.sleep(1.5)
 p1_pkmn1 = charizard1
 p2_pkmn1 = charizard2
-p1_active_pkmn = 'charizard'
-p2_active_pkmn = 'charizard'
+p1_active_pkmn = charizard1
+p2_active_pkmn = charizard2
 dramatic_effect(f"{player1_name}: '{p1_active_pkmn}, go!' ")
 time.sleep(1)
 dramatic_effect(f"{player2_name}: '{p2_active_pkmn}, go!' ")
@@ -170,12 +168,11 @@ winsound.PlaySound('battle music.wav', winsound.SND_ASYNC)
 time.sleep(1)
 while charizard1.hp > 0 or charizard2.hp > 0:
     #Pokemon battle loop starts here
-    #p1_turnchoice = input(dramatic_effect(f'{p1_activepkmn} is your active Pokemon, switch active pkmn or fight?'))
     dramatic_effect(f'{player1_name}, choose your move')
     for listed_move in toolbox_charizard:
         dramatic_effect(listed_move)
         time.sleep(0.5)
-    p1_turnchoice = input('Choose').lower()
+    p1_turnchoice = input('Choose ').lower()
     while p1_turnchoice not in toolbox_charizard:
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(dramatic_effect(f'{player1_name}, choose your move')).lower()
