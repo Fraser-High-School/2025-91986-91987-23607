@@ -1,8 +1,9 @@
 #Imports
-from Pokédex import *
+#Lists and dictionaries
+this_dictionary = {
+
+}
 #Functions
-
-
 #Main
-a = super_effective(air_slash, decidueye1)
-print(a)
+this_dictionary.update({'apple' : 'banana'})
+print(this_dictionary)

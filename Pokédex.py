@@ -4,8 +4,8 @@ This module also stores the moves and their data, and lists of moves that define
 #Imports
 #Main code
 class Pokémon:
-"""This class defines all the data about the Pokémon exept for its moves. It includes stats, typing and name.
-the functions found in Battle! will interact with the data of each Pokémon and their moves to produce an outcome, usually a number"""
+    """This class defines all the data about the Pokémon exept for its moves. It includes stats, typing and name.
+    the functions found in Battle! will interact with the data of each Pokémon and their moves to produce an outcome, usually a number"""
     def __init__(self, name, atk, dif, spd, spatk, spdif, hp, typing):
         self.name = name
         self.atk = atk

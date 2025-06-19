@@ -13,6 +13,7 @@ charizard_movesets = ['1', 'Special Attacker Toolbox', '2', 'Belly Drum']
 pokémon_call ={
     
 }
+p1active_pokémon = ()
 playable_pkmn = ['Charizard 🦎🐦‍🔥', 'Hisuian Decidueye 🍃🦉', 'Swampert 🦎💧', 'Toggekiss 🪽✨']
 #Functions
 def p(strin): 
@@ -58,8 +59,8 @@ while pkmn1_selected == False:
     pkmn_choice = input('')
     pkmn_choice = pkmn_choice.lower()
     time.sleep(1)
-        """This section is specially important as there is no graphic user interface.
-    A brief description with emojis will help the user to visualise the Pokemon they are about to choose""""
+    """This section is specially important as there is no graphic user interface.
+    A brief description with emojis will help the user to visualise the pokémon they are about to choose"""
     if pkmn_choice == 'info decidueye':
         dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon'")
         dramatic_effect("Decidueye uses Triple Arrow to increase the chance of landing critical hits, then attacks with powerful physical moves.")
@@ -72,19 +73,19 @@ while pkmn1_selected == False:
         dramatic_effect("Swampert, #260, 'Mud Fish Pokémon'")
         dramatic_effect("Using Curse to increase its physical stats, Swampert can resist and deliver hard hits.")
         time.sleep(1)
-    elif pkmn_choice == 'info togekiss':
-        dramatic_effect("Togekiss, #468, 'Jubelee Pokémon'")
-        dramatic_effect("Togekiss can heal itself with Daining kiss while still doing damage.")
+    elif pkmn_choice == 'info toggekiss':
+        dramatic_effect("Toggekiss, #468, 'Jubelee Pokémon'")
+        dramatic_effect("Toggekiss can heal itself with Daining kiss while still doing damage.")
         time.sleep(1)
-    elif pkmn_choice == 'decidueye': #Here is the part in which the user gets to choose the moveset of their Pokemon.
-        #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the Pokemon's capacities above
+    elif pkmn_choice == 'decidueye': #Here is the part in which the user gets to choose the moveset of their pokémon.
+        #I decided not to include a full description of the movesets as I think randomness can make the game more amusing, and there is a brief explanation of the pokémon's capacities above
         if decidueye1 in taken:
-            dramatic_effect('Sorry, that Pokemon is already take, please use a different one')
+            dramatic_effect('Sorry, that pokémon is already take, please use a different one')
             time.sleep(1)
             break #??
         p1_pkmn_1 = 'decidueye'
         taken.append(decidueye1)
-        pokémon_call.update{[active_pokemon : decidueye1]}
+        pokémon_call.update({active_pokémon : decidueye1})
         dramatic_effect('Choose a moveset')
         time.sleep(1.5)
         for movset in decidueye_movesets:
@@ -98,18 +99,22 @@ while pkmn1_selected == False:
         if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'Triple Arrows + Leaf Blade':  
             dramatic_effect(f"Congrats {player1_name}, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
             pkmn1_selected = True
-            pokémon_call.update{[p1_activepkmn_moveset : triplearrows_decidueye]}
+            pokémon_call.update({p1_activepkmn_moveset : triplearrows_decidueye})
             break
         elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'Swords Dance + Trailblaze':
             dramatic_effect(f"Congrats {player1_name}, You rented 'Swords Dance Hisuian Decidueye' successfully.")
             pkmn1_selected = True
-            pokémon_call.update{[p1_activepkmn_moveset : swordsdance_decidueye]}
+            pokémon_call.update({p1_activepkmn_moveset : swordsdance_decidueye})
             break
 
     elif pkmn_choice == 'charizard':
+        if charizard1 in taken:
+            dramatic_effect('Sorry, that pokémon is already take, please use a different one')
+            time.sleep(1)
+            break #??
         p1_pkmn_1 = charizard1
         taken.append(charizard1)
-        pokémon_call.update{[active_pokemon : charizard1]}
+        pokémon_call.update({p1active_pokémon : charizard1})
         dramatic_effect('Choose a moveset')
         time.sleep(1.5)
         for movset in charizard_movesets:
@@ -121,10 +126,12 @@ while pkmn1_selected == False:
         if p1_pkmn_1_moveset == '2' or p1_pkmn_1_moveset == 'belly drum':
             dramatic_effect("Congrats Trainer 1, You rented 'Belly Drum' successfully.")
             pkmn1_selected = True
+            pokémon_call.update({p1_activepkmn_moveset : bellydrum_charizard})
             break
         elif p1_pkmn_1_moveset == '1' or p1_pkmn_1_moveset == 'special attacker toolbox':
             pkmn1_equals = dict(p1_pkmn1 = charizard1, p1_pkmn1_moveset = toolbox_charizard)
             dramatic_effect("Congrats Trainer 1, You rented 'Toolbox Charizard' successfully.")
+            pokémon_call.update({p1_activepkmn_moveset : toolbox_charizard})
             pkmn1_selected = True
             break
         while p1_pkmn_1_moveset not in charizard_movesets:
@@ -133,4 +140,4 @@ while pkmn1_selected == False:
     else:
         dramatic_effect('Sorry, but I did not understand your comand, please try again')
         time.sleep(1)
-import Battle!
+exit
