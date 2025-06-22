@@ -1,11 +1,11 @@
-"""This is the file for the Pokémon, the playable characters in this game.
-I will be adding all the necesary data about their moves, statistics, etc.
-This module also stores the moves and their data, and lists of moves that define the Pokémon's movesets"""
+#This is the file for the Pokémon, the playable characters in this game. version: 1
+#I will be adding all the necesary data about their moves, statistics, etc.
 #Imports
 #Main code
 class Pokémon:
-    """This class defines all the data about the Pokémon exept for its moves. It includes stats, typing and name.
-    the functions found in Battle! will interact with the data of each Pokémon and their moves to produce an outcome, usually a number"""
+    """This class defines all the data about the Pokémon exept for its moves. It includes stats and typing.
+    other attributes present in the original material were disregaded as this adaptation will not use those attributes,
+    or those attributes will be imposible to change, like abilities, nature, etc."""
     def __init__(self, name, atk, dif, spd, spatk, spdif, hp, typing):
         self.name = name
         self.atk = atk
@@ -15,17 +15,29 @@ class Pokémon:
         self.spdif = spdif
         self.hp = hp
         self.typing = typing
-
+"""I decided to code each Pokémon twice with 2 different names, as both players will be able to have one at the same time,
+with the same attributes, but Python does not naturally allow object clonation, so, if I want 2 copies of the same object,
+I have to code 2 separate objects and give them the same attributes"""
+#Object Charizard
 charizard1 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, ['fire', 'flying'])
 charizard2 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, ['fire', 'flying'])
 
+#Object Decidueye
 decidueye1 = Pokémon('decidueye', 143, 111, 91, 126, 126, 174, ['grass', 'fighting'])
 decidueye2 = Pokémon('decidueye', 143, 111, 91, 126, 126, 174, ['grass', 'fighting'])
 
-class move:
+#Object Swampert
+swampert1 = Pokémon('swampert', 141, 121, 91, 116, 121, 186, ['water', 'ground'])
+swampert2 = Pokémon('swampert', 141, 121, 91, 116, 121, 186, ['water', 'ground'])
+
+#Object Togekiss
+togekiss1 = Pokémon('togekiss', 81, 126, 111, 151, 146, 171, ['fairy', 'flying'])
+togekiss2 = Pokémon('togekiss', 81, 126, 111, 151, 146, 171, ['fairy', 'flying'])
+
+class move: 
     """This class defines all the characteristics of a move, like base power, name, accuaracy, etc.
-    Specific effects of each move will be coded separately. These are coded as their own class, separated from Pokémon,
-    as Pokémon can have more than 1 move and each Pokémon has 2 movesets"""
+    Specific effects of each move will be coded separately. Other attributes present in the orignal material were 
+    disregarded as ther will not be used for this simulation, like priority, field effects, secret 'types', etc."""
     def __init__(self, move_name, base_power, effect, effect_chance, acc, ptype, crit_rate, category):
         self.move_name = move_name
         self.base_power = base_power
@@ -56,14 +68,42 @@ steel_wing = move('steel wing', 70, True, 10, 90, 'steel', 417, 'physical')
 
 #Swords Dance Decidueye moves
 swords_dance = move('swords dance', 0, True, 100, 100, 'normal', 0, 'status')
-sucker_punch = move('sucker punch', 70, True, 100, 100, 'dark', 417, 'physical')
+sucker_punch = move('sucker punch', 70, True, 50, 100, 'dark', 417, 'physical')
 trailblaze = move('trailblaze', 50, True, 100, 100, 'grass', 417, 'physical')
 close_combat = move('close combat', 120, True, 100, 100, 'fighting', 417, 'physical')
 
-#
-#List of the movesets
+#Curse Swampert moves
+curse = move('curse', 0, True, 100, 100, 'ghost', 0, 'status')
+water_pledge = move('water pledge', 80, False, 0, 100, 'water', 417, 'special')
+ice_punch = move('ice punch', 75, False, 0, 100, 'ice', 417, 'physical')
+earthquake = move('earthquake', 100, False, 0, 100, 'ground', 417, 'physical')
+
+#Defensive Swampert moves
+ice_beam = move('ice beam', 90, False, 0, 100, 'ice', 417, 'special')
+surf = move('surf', 90, False, 0, 100, 'water', 417, 'special')
+life_dew = move('life dew', 0, True, 100, 100, 'water', 0, 'status')
+amnesia = move('amnesia', 0, True, 100, 100, 'psychic', 0, 'status')
+
+#Toolbox Togekiss moves
+water_pulse = move('water pulse', 60, False, 0, 100, 'water', 417, 'special')
+shock_wave = move('shock wave', 60, False, 0, 100, 'electric', 417, 'special')
+gust = move('gust', 40, False, 0, 100, 'flying', 417, 'special')
+
+#Tank Togekiss moves
+charm = move('charm', 0, True, 100, 100, 'fairy', 417, 'status')
+shadow_ball = move('shadow ball', 80, True, 20, 100, 'ghost', 417, 'special')
+magical_leaf = move('magical leaf', 60, False, 0, 100, 'grass', 417, 'special')
+
+"""Lists of the movesets: This will be displayed when the player has to choose their move"""
+#Charizard's movesets
 toolbox_charizard = ['flamethrower', 'solar beam', 'air slash', 'ancient power']
 bellydrum_charizard = ['belly drum', 'flare blitz', 'acrobatics', 'metal claw']
-
+#Decidueye's movesets
 triplearrows_decidueye = ['triple arrows', 'leaf blade', 'brave bird', 'steel wing']
-swordsdance_decidueye = ['swords dance', 'sucker punch', 'trailblaze', '']
+swordsdance_decidueye = ['swords dance', 'sucker punch', 'trailblaze', 'close combat']
+#Swampert's movesets
+curse_swampert = ['curse', 'water pledge', 'ice punch', 'earthquake']
+defensive_swampert = ['ice beam', 'surf', 'life dew', 'amnesia']
+#Togekiss's movesets
+toolbox_togekiss = ['ancient power', 'water pulse', 'shock wave', 'gust']
+tank_togekiss = ['charm', 'life dew', 'shadow ball', 'magical leaf']

@@ -6,29 +6,27 @@ from Pokédex import *
 from Main import *
 #Lists
 #functions
+#dramatic_effect prints one by one, which is very neat 
 def dramatic_effect(txt):
-    """dramatic_effect prints one by one, which is very neat.
-    It also adds a next line spacing, which contributes to the aesthetic of the program"""
     for letter in txt:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.04)
     print('\n')
-
+#crit_hit is an adaptation of how critical hits work in the original game. most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
+#a critical hit is when an attack does more damage than it is supposed to do by pure randomness.
 def crit_hit(move):
-    """crit_hit is an adaptation of how critical hits work in the original game. 
-    Most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
-    a critical hit is when an attack does more damage than it is supposed to do by pure randomness."""
+    security_chech = hasattr(move, 'crit_rate')
+    if security_chech == False:
+        return "error: the move selected (if any) does not have a critical hit rate"
     chance = random.randint(1, 10000)
     if chance <= move.crit_rate:
         return 1.5
     else:
         return 1.0
 
+#"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
 def stab(move, attacker):
-    """"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using.
-    This replicates how STAB works in the original material by cheching if the move's type among the Pokemon's types and returns 1 or 1.5,
-    which is then used as a multiplier in damage_calculation."""
     security_chech = hasattr(move, 'ptype')
     if security_chech == False:
         return "error: the move selected (if any) does not have attribute 'ptype'"
@@ -37,10 +35,9 @@ def stab(move, attacker):
     else:
         return 1
 
+#super_effective is an adaptation of how super effective hits work in the game. I feel like this function could be optimised, but I don't know if I have the time, and it seems to work well
+#This function returns a value between 0.25 and 4, which is then used as a multiplier in damage_calculation
 def super_effective(move, target):
-    """super_effective is an adaptation of how super effective hits work in the game.
-    I feel like this function could be optimised, but I don't know if I have the time, and it seems to work well
-    This function returns a value between 0.25 and 4, which is then used as a multiplier in damage_calculation"""
     effectiveness = 1
     security_chech = hasattr(move, 'ptype')
     if security_chech == False:
