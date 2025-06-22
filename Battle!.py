@@ -20,9 +20,7 @@ def crit_hit(move):
     if security_chech == False:
         return "error: the move selected (if any) does not have a critical hit rate"
     chance = random.randint(1, 10000)
-    if chance <= 417:
-        return 1.5
-    elif (move).crit_rate == 1250 and chance <= 1250:
+    if chance <= move.crit_rate:
         return 1.5
     else:
         return 1.0
@@ -135,11 +133,12 @@ def super_effective(move, target):
     else: #This covers neutral and unexpected cases of type interactions
         return effectiveness
 
-#Damage calculation explained:
-    #50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
-    #This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
-    #Damage of a move always varies between 100% and 85%
+
 def damage_calculation(move, attacker, target):
+    """Damage calculation explained:
+    50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
+    This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
+    Damage of a move always varies between 100% and 85%"""
     security_check = hasattr(attacker, 'hp')
     if security_check == False:
         return "attacker (if any) has no hp attribute, thus, it is not a Pokémon" #Error message to detect if a Pokémon is being used as an attacker in the damage calculation
@@ -151,6 +150,15 @@ def damage_calculation(move, attacker, target):
         damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.atk / target.dif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
         return damage
+
+def accuaracy_check(move):
+    security_check = hasattr(move, 'acc')
+    if security_check == False:
+        return "error: move selected (if any) does not have attribute 'acc'(accuaracy)"
+    if random.randint(1, 100) <= move.acc:
+        return True
+    else:
+        return 'the move failed!'
 
 #Main
 player1_name = 'Ash'
@@ -177,7 +185,7 @@ while charizard1.hp > 0 or charizard2.hp > 0:
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(dramatic_effect(f'{player1_name}, choose your move')).lower()
     if p1_turnchoice == toolbox_charizard[0]:
-
+        p('a')
 
 
 #This part happens only if one pkmn is KO'd
