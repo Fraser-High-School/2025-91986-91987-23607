@@ -1,11 +1,9 @@
-#imports
-from Pokédex import *
-import random
-#Lists, dictionaries and variables
-test_dict = {
-    'a' : 'b'
+#Imports
+#Lists and dictionaries
+this_dictionary = {
+
 }
 #Functions
 #Main
-test_dict.update({'c' : 'd'})
-print(test_dict)
+this_dictionary.update({'apple' : 'banana'})
+print(this_dictionary)
