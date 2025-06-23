@@ -1,16 +1,18 @@
-#Title: Pokémon Battle Pyhon Simulator
-#Author: Ezequiel Ordo;ez
-#Version number: 0.1
-"""Desctription: A Pokémon battle simulator coded in Python. 
+# Title: Pokémon Battle Pyhon Simulator
+# Author: Ezequiel Ordo;ez
+# Version number: 0.3
+"""Desctription: A Pokémon battle simulator coded in Python.
+
     In this videogame you will be able to challenge your friends to a Pokémon battle using 3 out of 4 Pokémon,
     each Pokémon has 2 movesets of 4 moves each.
     This program tries to replicate the battle system of Pokémon Scarlet and Violet,
-    thus it was made pof users with prior experience with Pokémon videogames"""
-#Imports
+    thus it was made pof users with prior experience with Pokémon videogames.
+    """
+# Imports
 import time
 import sys
 from Pokédex import *
-#Lists, dictionaries, and predefined variables
+# Lists, dictionaries, and predefined variables
 taken = []
 decidueye_movesets = ['1', 'Swords Dance + Trailblaze', '2', 'Triple Arrows + Leaf Blade']
 charizard_movesets = ['1', 'Special Attacker Toolbox', '2', 'Belly Drum']
@@ -19,24 +21,28 @@ togekiss_movesets = ['1', 'Special Attacker Toolbox', '2', 'Physical Tank']
 playable_pkmn = ['1. Charizard 🦎🐦‍🔥', '2. Hisuian Decidueye 🍃🦉', '3. Swampert 🦎💧', '4. Toggekiss 🪽✨']
 p1_active_pokémon = ''
 p1_activepokémon_moveset = '' 
-#Functions
-def p(strin): #This function makes it shorter to use "print", saving me valuable time.
+# Functions
+def p(strin):
+    """This function makes it shorter to use "print", saving me valuable time.
+
+    I later added '\n' to the end of the string, making this function sligthly different from 'print', 
+    and also saving space and time later on, when spacing is neccesary
+    """
     print(f'{strin} \n')
     
 def dramatic_effect(txt):
+    """dramatic_effect types the characters 1 by 1, making the program more visually appealing.
+
+    It uses a loop and functions imported from sys to print characters in a given string, one by one.
+    
+    """
     for letter in txt:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.04)
     print('\n')
-        #dramatic_effect uses a loop to type the characters in a string 1 by 1, making the program more visually appealing.
 
-def no_blank_fields_pls (field):
-    while field == '' or field.isalpha() == False:
-        print("Please, only introduce words in this field.")
-        time.sleep(0.5)
-        #This function prevents the user from typing letters or leaving blank fields when they are asked something.
-#Main code
+# Main code
 dramatic_effect('Welcome to the')
 time.sleep(0.5)
 p('⭐Pokémon⭐')
@@ -63,26 +69,26 @@ while pkmn1_selected == False:
     if pkmn_choice == 'info decidueye' or pkmn_choice == 'info hisuian decidueye':
         """This section is specially important as there is no graphic user interface.
         A brief description with emojis will help the user to visualise the Pokemon they are about to choose"""
-        dramatic_effect("Decidueye, #724 'Arrow Quill Pokémon' ✊🍂")
+        dramatic_effect("Decidueye, # 724 'Arrow Quill Pokémon' ✊🍂")
         dramatic_effect("Decidueye uses Triple Arrows to decrease the opponent's defense, then attacks with powerful physical moves. ")
         time.sleep(1)
     elif pkmn_choice == 'info charizard':
-        dramatic_effect("Charizard, #006, 'Flame Pokémon' 🔥🐲")
+        dramatic_effect("Charizard, # 006, 'Flame Pokémon' 🔥🐲")
         dramatic_effect("Charizard has a move for every situation. Find the right one to melt your oponent with super effective attacks.")
         time.sleep(1)
     elif pkmn_choice == 'info swampert':
-        dramatic_effect("Swampert, #260, 'Mud Fish Pokémon'🐸🌊")
+        dramatic_effect("Swampert, # 260, 'Mud Fish Pokémon'🐸🌊")
         dramatic_effect("Using Curse to increase its physical stats, Swampert can resist and deliver hard hits.")
         time.sleep(1)
     elif pkmn_choice == 'info togekiss':
-        dramatic_effect("Togekiss, #468, 'Jubelee Pokémon' 🧚‍♀️🕊️")
+        dramatic_effect("Togekiss, # 468, 'Jubelee Pokémon' 🧚‍♀️🕊️")
         dramatic_effect("Togekiss can heal itself with Life dew while still doing great damage thanks to its high special attack.")
         time.sleep(1)
     elif pkmn_choice == 'decidueye' or pkmn_choice == 'hisuian decidueye' or pkmn_choice == '2': 
         if decidueye1 in taken:
             dramatic_effect('Sorry, that Pokemon is already taken, please use a different one')
             time.sleep(1)
-            break #??
+            break # ??
         p1_pkmn_1 = 'decidueye'
         taken.append(decidueye1)
         p1_active_pokémon = decidueye1
@@ -102,7 +108,7 @@ while pkmn1_selected == False:
         if moveset_choice == '2' or moveset_choice == 'Triple Arrows + Leaf Blade':  
             dramatic_effect(f"Congrats {player1_name}, You rented 'Triple Arrows Hisuian Decidueye' successfully.")
             pkmn1_selected = True
-            #A list containing the moves is assigned to the Pokémon
+            # A list containing the moves is assigned to the Pokémon
             p1_active_pokémon.moves = triplearrows_decidueye
             break
         elif moveset_choice == '1' or moveset_choice == 'Swords Dance + Trailblaze':
@@ -192,4 +198,4 @@ while pkmn1_selected == False:
     else:
         dramatic_effect('Sorry, but I did not understand your comand, please try again')
         time.sleep(1)
-#import Battle!
+# import Battle
