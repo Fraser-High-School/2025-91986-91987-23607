@@ -6,7 +6,7 @@ class Pokémon:
     """This class defines all the data about the Pokémon exept for its moves. It includes stats and typing.
     other attributes present in the original material were disregaded as this adaptation will not use those attributes,
     or those attributes will be imposible to change, like abilities, nature, etc."""
-    def __init__(self, name, atk, dif, spd, spatk, spdif, hp, typing):
+    def __init__(self, name, atk, dif, spd, spatk, spdif, hp, typing, moves = ['placeholder']):
         self.name = name
         self.atk = atk
         self.dif = dif
@@ -15,6 +15,7 @@ class Pokémon:
         self.spdif = spdif
         self.hp = hp
         self.typing = typing
+        self.moves = moves
 """I decided to code each Pokémon twice with 2 different names, as both players will be able to have one at the same time,
 with the same attributes, but Python does not naturally allow object clonation, so, if I want 2 copies of the same object,
 I have to code 2 separate objects and give them the same attributes"""
@@ -96,14 +97,14 @@ magical_leaf = move('magical leaf', 60, False, 0, 100, 'grass', 417, 'special')
 
 """Lists of the movesets: This will be displayed when the player has to choose their move"""
 #Charizard's movesets
-toolbox_charizard = ['flamethrower', 'solar beam', 'air slash', 'ancient power']
-bellydrum_charizard = ['belly drum', 'flare blitz', 'acrobatics', 'metal claw']
-#Decidueye's movesets
-triplearrows_decidueye = ['triple arrows', 'leaf blade', 'brave bird', 'steel wing']
-swordsdance_decidueye = ['swords dance', 'sucker punch', 'trailblaze', 'close combat']
-#Swampert's movesets
-curse_swampert = ['curse', 'water pledge', 'ice punch', 'earthquake']
-defensive_swampert = ['ice beam', 'surf', 'life dew', 'amnesia']
-#Togekiss's movesets
-toolbox_togekiss = ['ancient power', 'water pulse', 'shock wave', 'gust']
-tank_togekiss = ['charm', 'life dew', 'shadow ball', 'magical leaf']
+toolbox_charizard = [flamethrower, solar_beam, air_slash, ancient_power]
+bellydrum_charizard = [belly_drum, flare_blitz, acrobatics, metal_claw]
+#Decidueyes movesets
+triplearrows_decidueye = [triple_arrows, leaf_blade, brave_bird, steel_wing]
+swordsdance_decidueye = [swords_dance, sucker_punch, trailblaze, close_combat]
+#Swamperts movesets
+curse_swampert = [curse, water_pledge, ice_punch, earthquake]
+defensive_swampert = [ice_beam, surf, life_dew, amnesia]
+#Togekisss movesets
+toolbox_togekiss = [ancient_power, water_pulse, shock_wave, gust]
+tank_togekiss = [charm, life_dew, shadow_ball, magical_leaf]

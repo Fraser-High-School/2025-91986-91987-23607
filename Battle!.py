@@ -152,6 +152,9 @@ def damage_calculation(move, attacker, target):
         return damage
 
 def accuaracy_check(move):
+    """In the videogames, all moves have accuaracy and some of them can fail.
+    there are also moves and abilities that can affect how likely it is that a Pokémon lands a certain move.
+    In this simulation, the only move that can fail is Air Slash, but adding this function will help in case the game is updated or expanded."""
     security_check = hasattr(move, 'acc')
     if security_check == False:
         return "error: move selected (if any) does not have attribute 'acc'(accuaracy)"
@@ -180,16 +183,16 @@ while charizard1.hp > 0 or charizard2.hp > 0:
     for listed_move in toolbox_charizard:
         dramatic_effect(listed_move)
         time.sleep(0.5)
-    p1_turnchoice = input('Choose ').lower()
-    while p1_turnchoice not in toolbox_charizard:
+    p1_turnchoice = input("Choose your move, or type <hp> to know your active Pokémon's remaining heal points").lower()
+    while p1_turnchoice not in toolbox_charizard and p1_turnchoice != 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, as it did not understand your comand\x1B[23m')
-        p1_turnchoice = input(dramatic_effect(f'{player1_name}, choose your move')).lower()
+        p1_turnchoice = input(dramatic_effect(f"{player1_name}, choose your move, or check your Pokémon's hp")).lower()
     if p1_turnchoice == toolbox_charizard[0]:
         p('a')
 
 
 #This part happens only if one pkmn is KO'd
-if charizard1.hp == 0 and charizard2.hp == 0: #Victory and tie conditions use a function built into the Pokemon class itself
+if charizard1.hp == 0 and charizard2.hp == 0:
     dramatic_effect("Eh!? What's this!!?")
     dramatic_effect("Both active Pokémon are knocked out, It's a tie!!!")
     dramatic_effect('🎊🎉🎆')
