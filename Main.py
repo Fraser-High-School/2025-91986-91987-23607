@@ -56,6 +56,7 @@ time.sleep(1.5)
 start = input("Press 'ENTER' to start ")
 time.sleep(0.5)
 player1_name = input('Introduce the name of player 1: ')
+time.sleep(1.5)
 player2_name = input('Introduce the name of player 2: ')
 dramatic_effect(f'{player1_name}, select your first Pokémon:')
 for name in playable_pkmn:
@@ -136,7 +137,7 @@ while pkmn1_selected == False:
 
             break
         elif moveset_choice == '1' or moveset_choice == 'special attacker toolbox':
-            dramatic_effect("Congrats Trainer 1, You rented 'Toolbox Charizard' successfully.")
+            dramatic_effect(f"Congrats {player1_name}, You rented 'Toolbox Charizard' successfully.")
             pkmn1_selected = True
             p1_active_pokémon.moves = toolbox_charizard
             break
