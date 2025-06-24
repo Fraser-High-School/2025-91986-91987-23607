@@ -6,16 +6,27 @@ from Pokédex import *
 from Main import *
 #Lists
 #functions
-#dramatic_effect prints one by one, which is very neat 
+
+
 def dramatic_effect(txt):
+    """Type characters of a given string one by one.
+
+    It uses a loop and functions imported from sys to print characters
+    in a given string, one by one, while also adding spacing at the end.
+    """
     for letter in txt:
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.04)
     print('\n')
-#crit_hit is an adaptation of how critical hits work in the original game. most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
-#a critical hit is when an attack does more damage than it is supposed to do by pure randomness.
+
+
 def crit_hit(move):
+    """Choose a random number from 1 to 10K> If it is smaller than the argument's critical hit ratio, return 1.5
+
+    crit_hit is an adaptation of how critical hits work in the original game.
+    Most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
+    a critical hit is when an attack does more damage than it is supposed to do by pure randomness."""
     security_chech = hasattr(move, 'crit_rate')
     if security_chech == False:
         return "error: the move selected (if any) does not have a critical hit rate"
@@ -25,8 +36,9 @@ def crit_hit(move):
     else:
         return 1.0
 
-#"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
+
 def stab(move, attacker):
+    #"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
     security_chech = hasattr(move, 'ptype')
     if security_chech == False:
         return "error: the move selected (if any) does not have attribute 'ptype'"
@@ -35,9 +47,10 @@ def stab(move, attacker):
     else:
         return 1
 
-#super_effective is an adaptation of how super effective hits work in the game. I feel like this function could be optimised, but I don't know if I have the time, and it seems to work well
-#This function returns a value between 0.25 and 4, which is then used as a multiplier in damage_calculation
+
 def super_effective(move, target):
+    #super_effective is an adaptation of how super effective hits work in the game. I feel like this function could be optimised, but I don't know if I have the time, and it seems to work well
+    #This function returns a value between 0.25 and 4, which is then used as a multiplier in damage_calculation
     effectiveness = 1
     security_chech = hasattr(move, 'ptype')
     if security_chech == False:
@@ -136,8 +149,9 @@ def super_effective(move, target):
 
 def damage_calculation(move, attacker, target):
     """Damage calculation explained:
-    50 is the level of the attacking pkmn, but I chose to just put 50 since my program doesn't have any other interaction with the pkmn's level
-    This functions returns the damage a move does. It is the core of the battle system, so I must make sure it works properly
+    50 is the level of the attacking pkmn, but I chose to just put 50 as my program doesn't have
+    any other interaction with the pkmn's level. This functions returns the damage a move does. 
+    It is the core of the battle system, so I must make sure it works properly
     Damage of a move always varies between 100% and 85%"""
     security_check = hasattr(attacker, 'hp')
     if security_check == False:
@@ -151,10 +165,12 @@ def damage_calculation(move, attacker, target):
         damage = round(damage)
         return damage
 
+
 def accuaracy_check(move):
     """In the videogames, all moves have accuaracy and some of them can fail.
     there are also moves and abilities that can affect how likely it is that a Pokémon lands a certain move.
-    In this simulation, the only move that can fail is Air Slash, but adding this function will help in case the game is updated or expanded."""
+    In this simulation, the only move that can fail is Air Slash,
+    but adding this function will help in case the game is updated or expanded."""
     security_check = hasattr(move, 'acc')
     if security_check == False:
         return "error: move selected (if any) does not have attribute 'acc'(accuaracy)"
@@ -163,46 +179,46 @@ def accuaracy_check(move):
     else:
         return 'the move failed!'
 
+
 #Main
 player1_name = 'Ash'
-player2_name = 'George Lucas'
+player2_name = 'George P Lucas'
 dramatic_effect(f'A battle has started between {player1_name} and {player2_name}')
 time.sleep(1.5)
-p1_pkmn1 = charizard1
-p2_pkmn1 = charizard2
-p1_active_pkmn = charizard1
-p2_active_pkmn = charizard2
-dramatic_effect(f"{player1_name}: '{p1_active_pkmn}, go!' ")
+p1_active_pokémon = charizard1
+p1_active_pokémon.moves = toolbox_charizard
+p2_active_pokémon = charizard2
+p2_active_pokémon.moves = toolbox_charizard
+dramatic_effect(f"{player1_name}: '{p1_active_pokémon}, go!' ")
 time.sleep(1)
-dramatic_effect(f"{player2_name}: '{p2_active_pkmn}, go!' ")
+dramatic_effect(f"{player2_name}: '{p2_active_pokémon}, go!' ")
 winsound.PlaySound('battle music.wav', winsound.SND_ASYNC)
 time.sleep(1)
 while charizard1.hp > 0 or charizard2.hp > 0:
     #Pokemon battle loop starts here
     dramatic_effect(f'{player1_name}, choose your move')
-    for listed_move in toolbox_charizard:
-        dramatic_effect(listed_move)
+    for listed_move in p1_active_pokémon.moves:
+        dramatic_effect(listed_move.name)
         time.sleep(0.5)
     p1_turnchoice = input("Choose your move, or type <hp> to know your active Pokémon's remaining heal points").lower()
-    while p1_turnchoice not in toolbox_charizard and p1_turnchoice != 'hp':
+    while p1_turnchoice not in p1_active_pokémon.moves and p1_turnchoice is not 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(dramatic_effect(f"{player1_name}, choose your move, or check your Pokémon's hp")).lower()
     if p1_turnchoice == toolbox_charizard[0]:
         p('a')
 
-
 #This part happens only if one pkmn is KO'd
 if charizard1.hp == 0 and charizard2.hp == 0:
     dramatic_effect("Eh!? What's this!!?")
-    dramatic_effect("Both active Pokémon are knocked out, It's a tie!!!")
+    dramatic_effect("Both Pokémon are knocked out, It's a tie!!!")
     dramatic_effect('🎊🎉🎆')
 elif charizard1.hp == 0:
     dramatic_effect('The battle has come to an end!!!')
-    dramatic_effect(f"{player1_name}'s {p1_active_pkmn} can no longer fight!!!")
+    dramatic_effect(f"{player1_name}'s {p1_active_pokémon} can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player2_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')
 elif charizard2.hp == 0:
     dramatic_effect('The battle has come to an end!!!')
-    dramatic_effect(f"{player2_name}'s {p2_active_pkmn} can no longer fight!!!")
+    dramatic_effect(f"{player2_name}'s {p2_active_pokémon} can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player1_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')

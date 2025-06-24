@@ -2,6 +2,8 @@
 #I will be adding all the necesary data about their moves, statistics, etc.
 #Imports
 #Main code
+
+
 class Pokémon:
     """This class defines all the data about the Pokémon exept for its moves. It includes stats and typing.
     other attributes present in the original material were disregaded as this adaptation will not use those attributes,
@@ -16,6 +18,8 @@ class Pokémon:
         self.hp = hp
         self.typing = typing
         self.moves = moves
+
+
 """I decided to code each Pokémon twice with 2 different names, as both players will be able to have one at the same time,
 with the same attributes, but Python does not naturally allow object clonation, so, if I want 2 copies of the same object,
 I have to code 2 separate objects and give them the same attributes"""
@@ -35,6 +39,7 @@ swampert2 = Pokémon('swampert', 141, 121, 91, 116, 121, 186, ['water', 'ground'
 togekiss1 = Pokémon('togekiss', 81, 126, 111, 151, 146, 171, ['fairy', 'flying'])
 togekiss2 = Pokémon('togekiss', 81, 126, 111, 151, 146, 171, ['fairy', 'flying'])
 
+
 class move: 
     """This class defines all the characteristics of a move, like base power, name, accuaracy, etc.
     Specific effects of each move will be coded separately. Other attributes present in the orignal material were 
@@ -48,6 +53,7 @@ class move:
         self.crit_rate = crit_rate #4.17% is the base critical hit chance of most moves, that's why most moves will have this value set to 417
         self.category = category
         self.effect_chance = effect_chance
+
 
 #Toolbox Charizard moves:    
 flamethrower = move('flamethrower', 90, False, 0, 100, 'fire', 417, 'special')
