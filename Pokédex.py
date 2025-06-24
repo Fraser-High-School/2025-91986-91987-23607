@@ -20,9 +20,11 @@ class Pokémon:
         self.moves = moves
 
 
-"""I decided to code each Pokémon twice with 2 different names, as both players will be able to have one at the same time,
-with the same attributes, but Python does not naturally allow object clonation, so, if I want 2 copies of the same object,
-I have to code 2 separate objects and give them the same attributes"""
+"""I decided to code each Pokémon twice with 2 different names,
+as both players will be able to have one at the same time,
+with the same attributes, but Python does not naturally allow object clonation, 
+so, if I want 2 copies of the same object, I have to code 2 separate objects and
+give them the same attributes"""
 #Object Charizard
 charizard1 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, ['fire', 'flying'])
 charizard2 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, ['fire', 'flying'])
