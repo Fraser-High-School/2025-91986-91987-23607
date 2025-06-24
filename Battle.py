@@ -38,7 +38,9 @@ def crit_hit(move):
 
 
 def stab(move, attacker):
-    #"stab" (Same Type Attack Bounus) is a function that increases damage output if the Pokémon has the same type as the attack it is using
+    """"stab" (Same Type Attack Bounus) is a function that increases
+    damage output if the Pokémon has the same type as the attack it is using
+    """
     security_chech = hasattr(move, 'ptype')
     if security_chech is False:
         return "error: the move selected (if any) does not have attribute 'ptype'"
@@ -207,23 +209,35 @@ while charizard1.hp > 0 or charizard2.hp > 0:
     for listed_move in p1_active_pokémon.moves:
         dramatic_effect(listed_move.name)
         time.sleep(0.5)
-    p1_turnchoice = input("Choose your move, or type <hp> to know your"
-                        " active Pokémon's remaining heal points").lower()
+    p1_turnchoice = input(f"{player1_name}, choose your move, or type <hp> to know"
+                        " your active Pokémon's remaining hp").lower()
     while p1_turnchoice not in p1_active_pokémon.moves and p1_turnchoice is not 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(f"{player1_name}, choose your move"
-                              ", or check your Pokémon's hp").lower()
+                              ", or check your Pokémon's hp with 'hp'").lower()
     if p1_turnchoice == 'hp':
         p(f'{p1_active_pokémon.name} has {p1_active_pokémon.hp} left')
     else:
-        damage = damage_calculation(p1_turnchoice - 1, p1_active_pokémon, p2_active_pokémon)
+        p1_damage = damage_calculation(p1_turnchoice - 1, p1_active_pokémon, p2_active_pokémon)
+    p2_turnchoice = input(f"{player2_name}, choose your move, or type <hp> to know your"
+                        " active Pokémon's remaining hp").lower()
+    while p2_turnchoice not in p1_active_pokémon.moves and p2_turnchoice != 'hp':
+        dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
+                        'as it did not understand your comand\x1B[23m')
+        p2_turnchoice = input(f"{player2_name}, choose your move"
+                            "or check your Pokémon's hp with 'hp'").lower()
+    if p2_turnchoice == 'hp':
+        p(f'{p2_active_pokémon.name} has {p2_active_pokémon.hp} left')
+    else
+        p2_damage = damage_calculation(p2_turnchoice - 1, p2_active_pokémon, p1_active_pokémon)
+        
         #Effects function
         p2_active_pokémon.hp = p2_active_pokémon.hp - damage
         dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
         time.sleep(1.5)
         is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-        if is_effective == 1.5:
+        if is_effective == 1.5 and damage > 0:
             dramatic_effect("It's super effective!💥💥")
             time.sleep(1.5)
         dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')

@@ -22,9 +22,10 @@ class Pokémon:
 
 """I decided to code each Pokémon twice with 2 different names,
 as both players will be able to have one at the same time,
-with the same attributes, but Python does not naturally allow object clonation, 
-so, if I want 2 copies of the same object, I have to code 2 separate objects and
-give them the same attributes"""
+with the same attributes, but Python does not naturally allow
+object clonation, so, if I want 2 copies of the same object, I have to
+code 2 separate objects and give them the same attributes
+"""
 #Object Charizard
 charizard1 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, ['fire', 'flying'])
 charizard2 = Pokémon('charizard', 107, 101, 123, 132, 108, 156, ['fire', 'flying'])
@@ -43,16 +44,19 @@ togekiss2 = Pokémon('togekiss', 81, 126, 111, 151, 146, 171, ['fairy', 'flying'
 
 
 class move: 
-    """This class defines all the characteristics of a move, like base power, name, accuaracy, etc.
-    Specific effects of each move will be coded separately. Other attributes present in the orignal material were 
-    disregarded as ther will not be used for this simulation, like priority, field effects, secret 'types', etc."""
+    """This class defines all the characteristics of a move, like base power,
+    name, accuaracy, etc. Specific effects of each move will be coded separately.
+    Other attributes present in the orignal material were disregarded as they will
+    not be used for this simulation, like priority, field effects, etc.
+    """
     def __init__(self, move_name, base_power, effect, effect_chance, acc, ptype, crit_rate, category):
         self.move_name = move_name
         self.base_power = base_power
         self.effect = effect
         self.acc = acc
         self.ptype = ptype
-        self.crit_rate = crit_rate #4.17% is the base critical hit chance of most moves, that's why most moves will have this value set to 417
+        self.crit_rate = crit_rate
+# 4.17% is the base critical hit chance of most moves, that's why most moves will have this value set to 417
         self.category = category
         self.effect_chance = effect_chance
 
