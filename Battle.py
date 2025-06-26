@@ -3,7 +3,8 @@ import random
 import sys
 import time
 from Pokédex import *
-from Main import *
+#from Main import *
+import winsound
 #Lists
 #functions
 
@@ -198,49 +199,74 @@ p1_active_pokémon = charizard1
 p1_active_pokémon.moves = toolbox_charizard
 p2_active_pokémon = charizard2
 p2_active_pokémon.moves = toolbox_charizard
-dramatic_effect(f"{player1_name}: '{p1_active_pokémon}, go!' ")
+dramatic_effect(f"{player1_name}: '{p1_active_pokémon.name}, go!' ")
 time.sleep(1)
-dramatic_effect(f"{player2_name}: '{p2_active_pokémon}, go!' ")
+dramatic_effect(f"{player2_name}: '{p2_active_pokémon.name}, go!' ")
 winsound.PlaySound('battle music.wav', winsound.SND_ASYNC)
 time.sleep(1)
-while charizard1.hp > 0 or charizard2.hp > 0:
+while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
     #Pokemon battle loop starts here
     dramatic_effect(f'{player1_name}, choose your move')
     for listed_move in p1_active_pokémon.moves:
-        dramatic_effect(listed_move.name)
+        dramatic_effect(listed_move.move_name)
         time.sleep(0.5)
     p1_turnchoice = input(f"{player1_name}, choose your move, or type <hp> to know"
-                        " your active Pokémon's remaining hp").lower()
-    while p1_turnchoice not in p1_active_pokémon.moves and p1_turnchoice is not 'hp':
+                        " your active Pokémon's remaining hp ").lower()
+    while p1_turnchoice not in p1_active_pokémon.moves and p1_turnchoice != 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(f"{player1_name}, choose your move"
-                              ", or check your Pokémon's hp with 'hp'").lower()
+                              ", or check your Pokémon's hp by typing <hp> ").lower()
     if p1_turnchoice == 'hp':
-        p(f'{p1_active_pokémon.name} has {p1_active_pokémon.hp} left')
-    else:
-        p1_damage = damage_calculation(p1_turnchoice - 1, p1_active_pokémon, p2_active_pokémon)
+        p(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
+        p1_turnchoice = input(f"{player1_name}, choose your move from the list above ").lower()
+        while p1_turnchoice not in p1_active_pokémon.moves:
+            dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
+                        'as it did not understand your comand\x1B[23m')
+        p1_turnchoice = input(f"{player1_name}, choose your move ").lower()
+    p1_damage = damage_calculation(p1_turnchoice - 1, p1_active_pokémon, p2_active_pokémon)
+    for listed_move in p2_active_pokémon.moves:
+        dramatic_effect(listed_move.move_name)
+        time.sleep(0.5)
     p2_turnchoice = input(f"{player2_name}, choose your move, or type <hp> to know your"
-                        " active Pokémon's remaining hp").lower()
+                        " active Pokémon's remaining hp ").lower()
     while p2_turnchoice not in p1_active_pokémon.moves and p2_turnchoice != 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
-        p2_turnchoice = input(f"{player2_name}, choose your move"
-                            "or check your Pokémon's hp with 'hp'").lower()
+        p2_turnchoice = input(f"{player2_name}, choose your move "
+                            "or check your Pokémon's hp with 'hp' ").lower()
     if p2_turnchoice == 'hp':
-        p(f'{p2_active_pokémon.name} has {p2_active_pokémon.hp} left')
-    else
-        p2_damage = damage_calculation(p2_turnchoice - 1, p2_active_pokémon, p1_active_pokémon)
-        
-        #Effects function
-        p2_active_pokémon.hp = p2_active_pokémon.hp - damage
-        dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
+        p(f'{p2_active_pokémon.name} has 💚{p2_active_pokémon.hp} left')
+        p2_turnchoice = input(f"{player2_name}, choose your move from the list above ").lower()
+        while p2_turnchoice not in p1_active_pokémon.moves:
+            dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
+                        'as it did not understand your comand\x1B[23m')
+    p2_damage = damage_calculation(p2_turnchoice - 1, p2_active_pokémon, p1_active_pokémon)
+    if p2_active_pokémon.spd > p1_active_pokémon.spd:
+        p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
+        dramatic_effect(f'{p2_active_pokémon} used {p2_turnchoice.name}!💥')
         time.sleep(1.5)
         is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
         if is_effective == 1.5 and damage > 0:
             dramatic_effect("It's super effective!💥💥")
             time.sleep(1.5)
-        dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
+    dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
+    p2_active_pokémon.hp = p2_active_pokémon.hp - p1_damage
+    dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
+    time.sleep(1.5)
+    is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
+    if is_effective == 1.5 and damage > 0:
+        dramatic_effect("It's super effective!💥💥")
+        time.sleep(1.5)
+    dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
+    p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
+    dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
+    time.sleep(1.5)
+    is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
+    if is_effective == 1.5 and damage > 0:
+        dramatic_effect("It's super effective!💥💥")
+        time.sleep(1.5)
+    dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
 #This part happens only if one pkmn is KO'd
 if charizard1.hp == 0 and charizard2.hp == 0:
     dramatic_effect("Eh!? What's this!!?")
@@ -248,13 +274,13 @@ if charizard1.hp == 0 and charizard2.hp == 0:
     dramatic_effect('🎊🎉🎆')
 elif charizard1.hp == 0:
     dramatic_effect('The battle has come to an end!!!')
-    dramatic_effect(f"{player1_name}'s {p1_active_pokémon}"
+    dramatic_effect(f"{player1_name}'s {p1_active_pokémon.name}"
                     " can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player2_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')
 elif charizard2.hp == 0:
     dramatic_effect('The battle has come to an end!!!')
-    dramatic_effect(f"{player2_name}'s {p2_active_pokémon}"
+    dramatic_effect(f"{player2_name}'s {p2_active_pokémon.name}"
                     " can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player1_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')
