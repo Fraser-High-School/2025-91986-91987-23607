@@ -3,7 +3,6 @@ import random
 import sys
 import time
 from Pokédex import *
-#from Main import *
 import winsound
 #Lists
 #functions
@@ -21,6 +20,9 @@ def dramatic_effect(txt):
         time.sleep(0.04)
     print('\n')
 
+
+def p(strin):
+    print(f'{strin}\n')
 
 def crit_hit(move):
     """Choose a random number from 1 to 10K> If it is smaller than the argument's critical hit ratio, return 1.5
@@ -212,7 +214,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
         time.sleep(0.5)
     p1_turnchoice = input(f"{player1_name}, choose your move, or type <hp> to know"
                         " your active Pokémon's remaining hp ").lower()
-    while p1_turnchoice not in p1_active_pokémon.moves and p1_turnchoice != 'hp':
+    while p1_turnchoice not in p1_active_pokémon.move_name in p1_active_pokémon.moves.move_name and p1_turnchoice != 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(f"{player1_name}, choose your move"
@@ -220,10 +222,10 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
     if p1_turnchoice == 'hp':
         p(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
         p1_turnchoice = input(f"{player1_name}, choose your move from the list above ").lower()
-        while p1_turnchoice not in p1_active_pokémon.moves:
+        while p1_turnchoice not in move.move_name in p1_active_pokémon.moves.move_name:
             dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
-        p1_turnchoice = input(f"{player1_name}, choose your move ").lower()
+            p1_turnchoice = input(f"{player1_name}, choose your move ").lower()
     p1_damage = damage_calculation(p1_turnchoice - 1, p1_active_pokémon, p2_active_pokémon)
     for listed_move in p2_active_pokémon.moves:
         dramatic_effect(listed_move.move_name)
@@ -241,18 +243,20 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
         while p2_turnchoice not in p1_active_pokémon.moves:
             dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
+            p2_turnchoice = input(f"{player2_name}, choose your move from the list above ").lower()
     p2_damage = damage_calculation(p2_turnchoice - 1, p2_active_pokémon, p1_active_pokémon)
     if p2_active_pokémon.spd > p1_active_pokémon.spd:
-        p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
         dramatic_effect(f'{p2_active_pokémon} used {p2_turnchoice.name}!💥')
+        p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
+        dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
         time.sleep(1.5)
         is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
         if is_effective == 1.5 and damage > 0:
             dramatic_effect("It's super effective!💥💥")
             time.sleep(1.5)
     dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
-    p2_active_pokémon.hp = p2_active_pokémon.hp - p1_damage
     dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
+    p2_active_pokémon.hp = p2_active_pokémon.hp - p1_damage
     time.sleep(1.5)
     is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
     if is_effective == 1.5 and damage > 0:

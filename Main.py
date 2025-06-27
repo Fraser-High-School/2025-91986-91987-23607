@@ -33,7 +33,7 @@ def p(strin):
     different from 'print', and also saving space and time later on,
     when spacing is neccesary.
     """
-    print(f'{strin}')
+    print(f'{strin}\n')
 
 
 def dramatic_effect(txt):
