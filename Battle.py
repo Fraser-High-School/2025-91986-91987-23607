@@ -214,7 +214,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
         time.sleep(0.5)
     p1_turnchoice = input(f"{player1_name}, choose your move, or type <hp> to know"
                         " your active Pokémon's remaining hp ").lower()
-    while p1_turnchoice not in p1_active_pokémon.move_name in p1_active_pokémon.moves.move_name and p1_turnchoice != 'hp':
+    while p1_turnchoice not in p1_active_pokémon.moves.move_name and p1_turnchoice != 'hp':
         dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
         p1_turnchoice = input(f"{player1_name}, choose your move"
@@ -222,7 +222,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
     if p1_turnchoice == 'hp':
         p(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
         p1_turnchoice = input(f"{player1_name}, choose your move from the list above ").lower()
-        while p1_turnchoice not in move.move_name in p1_active_pokémon.moves.move_name:
+        while p1_turnchoice not in p1_active_pokémon.moves.move_name:
             dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
                         'as it did not understand your comand\x1B[23m')
             p1_turnchoice = input(f"{player1_name}, choose your move ").lower()
@@ -251,7 +251,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
         dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
         time.sleep(1.5)
         is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-        if is_effective == 1.5 and damage > 0:
+        if is_effective == 1.5 and p2_damage > 0:
             dramatic_effect("It's super effective!💥💥")
             time.sleep(1.5)
     dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
@@ -259,7 +259,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
     p2_active_pokémon.hp = p2_active_pokémon.hp - p1_damage
     time.sleep(1.5)
     is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-    if is_effective == 1.5 and damage > 0:
+    if is_effective == 1.5 and p1_damage > 0:
         dramatic_effect("It's super effective!💥💥")
         time.sleep(1.5)
     dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
@@ -267,7 +267,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
     dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
     time.sleep(1.5)
     is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-    if is_effective == 1.5 and damage > 0:
+    if is_effective == 1.5 and p2_damage > 0:
         dramatic_effect("It's super effective!💥💥")
         time.sleep(1.5)
     dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')

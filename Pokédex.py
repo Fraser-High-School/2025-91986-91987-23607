@@ -5,9 +5,11 @@
 
 
 class Pokémon:
-    """This class defines all the data about the Pokémon exept for its moves. It includes stats and typing.
-    other attributes present in the original material were disregaded as this adaptation will not use those attributes,
-    or those attributes will be imposible to change, like abilities, nature, etc."""
+    """This class defines all the data about the Pokémon exept for its moves.
+    It includes stats and typing. Other attributes present in the original
+    material were disregaded as this adaptation will not use those attributes,
+    or those attributes will be imposible to change, like abilities, nature, etc.
+    """
     def __init__(self, name, atk, dif, spd, spatk, spdif, hp, typing, moves = ['placeholder']):
         self.name = name
         self.atk = atk
@@ -46,66 +48,73 @@ togekiss2 = Pokémon('togekiss', 81, 126, 111, 151, 146, 171, ['fairy', 'flying'
 class move: 
     """This class defines all the characteristics of a move, like base power,
     name, accuaracy, etc. Specific effects of each move will be coded separately.
-    Other attributes present in the orignal material were disregarded as they will
-    not be used for this simulation, like priority, field effects, etc.
+    Other attributes present in the orignal material were disregarded as they
+    will not be used for this simulation, like priority, field effects, etc.
     """
-    def __init__(self, move_name, base_power, effect, effect_chance, acc, ptype, crit_rate, category):
+    def __init__(self, move_name, base_power, effect, effect_chance, acc, ptype, crit_rate, category, effect_id):
         self.move_name = move_name
         self.base_power = base_power
         self.effect = effect
         self.acc = acc
         self.ptype = ptype
         self.crit_rate = crit_rate
-# 4.17% is the base critical hit chance of most moves, that's why most moves will have this value set to 417
+        # 4.17% is the base critical hit chance of most moves,
+        # that's why most moves will have this value set to 417
         self.category = category
         self.effect_chance = effect_chance
+        self.effect_id = effect_id
 
 
 #Toolbox Charizard moves:    
-flamethrower = move('flamethrower', 90, False, 0, 100, 'fire', 417, 'special')
-solar_beam = move('solar beam', 120, True, 100, 100, 'grass', 417, 'special')
-air_slash = move('air slash', 75, True, 30, 95, 'flying', 417, 'special')
-ancient_power = move('ancient power', 60, True, 10, 100, 'rock', 417, 'special')
+flamethrower = move('flamethrower', 90, False, 0, 100, 'fire', 417, 'special', 'na')
+solar_beam = move('solar beam', 120, True, 100, 100, 'grass', 417, 'special', 'charge')
+air_slash = move('air slash', 75, True, 30, 95, 'flying', 417, 'special', 'na')
+ancient_power = move('ancient power', 60, True, 10, 100, 'rock', 417, 'special', 'na')
 
 #Belly drum Charizard moves:
-belly_drum = move('belly drum', 0, True, 100, 100, 'normal', 0, 'status')
-flare_blitz = move('flare blitz', 120, True, 100, 100, 'fire', 417, 'physical')
-acrobatics = move('acrobatics', 110, False, 0, 100, 'flying', 417, "physical")
-metal_claw = move('metal claw', 50, True, 10, 95, 'steel', 417, 'physical')
+belly_drum = move('belly drum', 0, True, 100, 100, 'normal', 0, 'status', 'bellydrum')
+"""I decided to give belly_drum the effect id 'bellydrum' as no other move has
+the same effect as Belly Drum in the original material. Therefore, making a
+generic effect id for this effect is unnecesary. The same is true for other
+moves with effect IDs that resemble their names.
+"""
+flare_blitz = move('flare blitz', 120, True, 100, 100, 'fire', 417, 'physical', 'recoil33')
+acrobatics = move('acrobatics', 110, False, 0, 100, 'flying', 417, "physical", 'na')
+metal_claw = move('metal claw', 50, True, 10, 95, 'steel', 417, 'physical', 'atk+1')
 
 #Triple Arrows Decidueye moves
-triple_arrows = move('triple arrows', 90, True, 50, 100, 'fighting', 1250, 'physical')
-leaf_blade = move('leaf blade', 90, False, 0, 100, 'grass', 1250, 'physical')
-brave_bird = move('brave bird', 120, True, 100, 100, 'flying', 417, 'physical')
-steel_wing = move('steel wing', 70, True, 10, 90, 'steel', 417, 'physical')
+triple_arrows = move('triple arrows', 90, True, 50, 100, 'fighting', 1250, 'physical', 'opp_def-1')
+leaf_blade = move('leaf blade', 90, False, 0, 100, 'grass', 1250, 'physical', 'na')
+brave_bird = move('brave bird', 120, True, 100, 100, 'flying', 417, 'physical', 'recoil33')
+steel_wing = move('steel wing', 70, True, 10, 90, 'steel', 417, 'physical', 'def+1')
 
 #Swords Dance Decidueye moves
-swords_dance = move('swords dance', 0, True, 100, 100, 'normal', 0, 'status')
-sucker_punch = move('sucker punch', 70, True, 50, 100, 'dark', 417, 'physical')
-trailblaze = move('trailblaze', 50, True, 100, 100, 'grass', 417, 'physical')
-close_combat = move('close combat', 120, True, 100, 100, 'fighting', 417, 'physical')
+swords_dance = move('swords dance', 0, True, 100, 100, 'normal', 0, 'status', 'atk+2')
+sucker_punch = move('sucker punch', 70, True, 50, 100, 'dark', 417, 'physical', 'spd+1')
+trailblaze = move('trailblaze', 50, True, 100, 100, 'grass', 417, 'physical', 'spd+1')
+close_combat = move('close combat', 120, True, 100, 100, 'fighting', 417, 'physical', 'defs-1')
 
 #Curse Swampert moves
-curse = move('curse', 0, True, 100, 100, 'ghost', 0, 'status')
-water_pledge = move('water pledge', 80, False, 0, 100, 'water', 417, 'special')
-ice_punch = move('ice punch', 75, False, 0, 100, 'ice', 417, 'physical')
-earthquake = move('earthquake', 100, False, 0, 100, 'ground', 417, 'physical')
+curse = move('curse', 0, True, 100, 100, 'ghost', 0, 'status', 'curs')
+water_pledge = move('water pledge', 80, False, 0, 100, 'water', 417, 'special', 'na')
+ice_punch = move('ice punch', 75, False, 0, 100, 'ice', 417, 'physical', 'na')
+earthquake = move('earthquake', 100, False, 0, 100, 'ground', 417, 'physical', 'na')
 
 #Defensive Swampert moves
-ice_beam = move('ice beam', 90, False, 0, 100, 'ice', 417, 'special')
-surf = move('surf', 90, False, 0, 100, 'water', 417, 'special')
-life_dew = move('life dew', 0, True, 100, 100, 'water', 0, 'status')
-amnesia = move('amnesia', 0, True, 100, 100, 'psychic', 0, 'status')
+ice_beam = move('ice beam', 90, False, 0, 100, 'ice', 417, 'special', 'na')
+surf = move('surf', 90, False, 0, 100, 'water', 417, 'special', 'na')
+life_dew = move('life dew', 0, True, 100, 100, 'water', 0, 'status', 'heal50')
+amnesia = move('amnesia', 0, True, 100, 100, 'psychic', 0, 'status', 'spdef+2')
 
 #Toolbox Togekiss moves
-water_pulse = move('water pulse', 60, False, 0, 100, 'water', 417, 'special')
-shock_wave = move('shock wave', 60, False, 0, 100, 'electric', 417, 'special')
-gust = move('gust', 40, False, 0, 100, 'flying', 417, 'special')
+water_pulse = move('water pulse', 60, False, 0, 100, 'water', 417, 'special', 'na')
+shock_wave = move('shock wave', 60, False, 0, 100, 'electric', 417, 'special', 'na')
+gust = move('gust', 40, False, 0, 100, 'flying', 417, 'special', 'na')
 
 #Tank Togekiss moves
-charm = move('charm', 0, True, 100, 100, 'fairy', 417, 'status')
-shadow_ball = move('shadow ball', 80, True, 20, 100, 'ghost', 417, 'special')
-magical_leaf = move('magical leaf', 60, False, 0, 100, 'grass', 417, 'special')
+charm = move('charm', 0, True, 100, 100, 'fairy', 417, 'status', 'opp_atk-2')
+shadow_ball = move('shadow ball', 80, True, 20, 100, 'ghost', 417, 'special', 'na')
+magical_leaf = move('magical leaf', 60, False, 0, 100, 'grass', 417, 'special', 'na')
 
 """Lists of the movesets: This will be displayed when the player has to choose their move"""
 #Charizard's movesets
