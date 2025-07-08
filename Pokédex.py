@@ -86,7 +86,7 @@ class move:
 
 #Toolbox Charizard moves:    
 flamethrower = move('flamethrower', 90, 0, 100, 'fire', 417, 'special', 'na', 0)
-overgrow = move('overgrow', 100, 100, 100, 'grass', 417, 'special', 'power', 0.5)
+overgrowth_shock = move('overgrowth shock', 100, 100, 100, 'grass', 417, 'special', 'power', 0.5)
 air_slash = move('air slash', 75, 30, 95, 'flying', 417, 'special', 'na', 0)
 ancient_power = move('ancient power', 60, 10, 100, 'rock', 417, 'special', 'all', 1.5)
 
@@ -137,7 +137,7 @@ magical_leaf = move('magical leaf', 60, 0, 100, 'grass', 417, 'special', 'na', 0
 
 """Lists of the movesets: This will be displayed when the player has to choose their move"""
 #Charizard's movesets
-toolbox_charizard = [flamethrower, overgrow, air_slash, ancient_power]
+toolbox_charizard = [flamethrower, overgrowth_shock, air_slash, ancient_power]
 bellydrum_charizard = [belly_drum, flare_blitz, acrobatics, metal_claw]
 #Decidueyes movesets
 triplearrows_decidueye = [triple_arrows, leaf_blade, brave_bird, steel_wing]
