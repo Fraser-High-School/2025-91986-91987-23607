@@ -4,6 +4,7 @@ import sys
 import time
 from Pokédex import *
 import winsound
+import pygame
 #Lists
 one_to_four = ['1', '2', '3', '4']
 #functions
