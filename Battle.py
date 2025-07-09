@@ -214,10 +214,10 @@ def move_effect(attacker, move, target):
     elif move.effect_id == 'bellydrum':
         attacker.hp = round(attacker.hp - attacker.og_hp * 0.5)
         attacker.atk = round(attacker.atk * move.effect_qty)
-        dramatic_effect(f"{attacker} lost HALF of its hp!")
-        dramatic_effect(f"{attacker}'s attack raised to its maximum ✊🆙")
+        dramatic_effect(f"{attacker.name} lost HALF of its hp!")
+        dramatic_effect(f"{attacker.name}'s attack raised to its maximum ✊🆙")
     elif move.effect_id == 'all':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
             attacker.atk = round(attacker.atk * move.effect_qty)
             attacker.dif = round(attacker.dif * move.effect_qty)
@@ -227,56 +227,56 @@ def move_effect(attacker, move, target):
             dramatic_effect(f"All of {attacker.name}'s stats increased")
     elif move.effect_id == 'power':
         move.base_power = move.base_power * move.effect_qty
-        if move.effect.qty < 1:
+        if move.effect_qty < 1:
             dramatic_effect("The move's power fell!")
         else:
             dramatic_effect("The move's power has rose!")
     elif move.effect_id == 'atk':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-            attacker.atk = round(attacker.atk * move.efffect_qty)
-            if move.effect.qty < 1:
+            attacker.atk = round(attacker.atk * move.effect_qty)
+            if move.effect_qty < 1:
                 dramatic_effect(f"{attacker.name}'s attack fell!")
             else:
                 dramatic_effect(f"{attacker.name}'s attack rose!")
     elif move.effect_id == 'spd':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-            attacker.spd = round(attacker.spd * move.efffect_qty)
-            if move.effect.qty < 1:
+            attacker.spd = round(attacker.spd * move.effect_qty)
+            if move.effect_qty < 1:
                 dramatic_effect(f"{attacker.name}'s speed fell!")
             else:
                 dramatic_effect(f"{attacker.name}'s speed rose!")
     elif move.effect_id == 'def':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-            attacker.dif = round(attacker.dif * move.efffect_qty)
-            if move.effect.qty < 1:
+            attacker.dif = round(attacker.dif * move.effect_qty)
+            if move.effect_qty < 1:
                 dramatic_effect(f"{attacker.name}'s defence fell!")
             else:
                 dramatic_effect(f"{attacker.name}'s defence rose!")
     elif move.effect_id == 'spatk':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-            attacker.spatk = round(attacker.spatk * move.efffect_qty)
-            if move.effect.qty < 1:
+            attacker.spatk = round(attacker.spatk * move.effect_qty)
+            if move.effect_qty < 1:
                 dramatic_effect(f"{attacker.name}'s special attack fell!")
             else:
                 dramatic_effect(f"{attacker.name}'s special attack rose!")
     elif move.effect_id == 'spdef':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-            attacker.spdif = round(attacker.spdif * move.efffect_qty)
-            if move.effect.qty < 1:
+            attacker.spdif = round(attacker.spdif * move.effect_qty)
+            if move.effect_qty < 1:
                 dramatic_effect(f"{attacker.name}'s special defence fell!")
             else:
                 dramatic_effect(f"{attacker.name}'s special defence rose!")
     elif move.effect_id == 'defs':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-           attacker.dif = round(attacker.dif * move.efffect_qty)
-           attacker.spdif = attacker.spdif * move.efffect_qty
-           if move.effect.qty < 1:
+           attacker.dif = round(attacker.dif * move.effect_qty)
+           attacker.spdif = attacker.spdif * move.effect_qty
+           if move.effect_qty < 1:
                 dramatic_effect(f"{attacker.name}'s defences rose!")
            else:
                 dramatic_effect(f"{attacker.name}'s defences fell!")
@@ -297,34 +297,34 @@ def move_effect(attacker, move, target):
         dramatic_effect(f"{attacker.name} lowered its speed to gain attack and defence!")
 # Effects of moves that change the foe's stats
     elif move.effect_id == 'opp_def':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-           target.dif = round(target.dif * move.efffect_qty)
-           if move.effect.qty < 1:
+           target.dif = round(target.dif * move.effect_qty)
+           if move.effect_qty < 1:
                 dramatic_effect(f"Foe {target.name}'s defence fell!")
            else:
                 dramatic_effect(f"Foe {target.name}'s defence rose!")
     elif move.effect_id == 'opp_atk':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-           target.atk = round(target.atk * move.efffect_qty)
-           if move.effect.qty < 1:
+           target.atk = round(target.atk * move.effect_qty)
+           if move.effect_qty < 1:
                 dramatic_effect(f"Foe {target.name}'s attack fell!")
            else:
                 dramatic_effect(f"Foe {target.name}'s attack rose!")
     elif move.effect_id == 'opp_spdef':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-           target.spdif = round(target.spdif * move.efffect_qty)
-           if move.effect.qty < 1:
+           target.spdif = round(target.spdif * move.effect_qty)
+           if move.effect_qty < 1:
                 dramatic_effect(f"Foe {target.name}'s special defence fell!")
            else:
                 dramatic_effect(f"Foe {target.name}'s special defence rose!")
     elif move.effect_id == 'opp_spatk':
-        chance = random.randit(1, 100)
+        chance = random.randint(1, 100)
         if chance <= move.effect_chance:
-           target.spatk = round(target.spatk * move.efffect_qty)
-           if move.effect.qty < 1:
+           target.spatk = round(target.spatk * move.effect_qty)
+           if move.effect_qty < 1:
                 dramatic_effect(f"Foe {target.name}'s special attack fell!")
            else:
                 dramatic_effect(f"Foe {target.name}'s special attack rose!")
@@ -341,13 +341,18 @@ p2_active_pokémon = swampert2
 p2_active_pokémon.moves = defensive_swampert
 p1_active_pokémon.original_stats()
 p2_active_pokémon.original_stats()
-
+dramatic_effect("In this battle facility, your Pokémon will not be able to"
+                " understand you if you write the name of the move you want to "
+                "use. Instead, try writing the *number* of the move on the list"
+                " that will be displayed during your turn, (eg '1', '3', etc.)")
 dramatic_effect(f"{player1_name}: '{p1_active_pokémon.name}, go!' ")
 time.sleep(1)
 dramatic_effect(f"{player2_name}: '{p2_active_pokémon.name}, go!' ")
-winsound.PlaySound('battle music.wav', winsound.SND_ASYNC)
+pygame.mixer.init()
+pygame.mixer.music.load('battle music.ogg')
+pygame.mixer.music.play(-1)
 time.sleep(1)
-while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
+while p1_active_pokémon.hp > 0 and p2_active_pokémon.hp > 0:
     #Pokemon battle loop starts here
     dramatic_effect(f'{player1_name}, choose your move')
     for index, listed_move in enumerate(p1_active_pokémon.moves, start = 1):
@@ -401,49 +406,56 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
 
     p2_turnchoice = p2_active_pokémon.moves[int(p2_turnchoice) - 1]
     p2_damage = damage_calculation(p2_turnchoice, p2_active_pokémon, p1_active_pokémon)
-    if p2_active_pokémon.spd > p1_active_pokémon.spd:
+    if p2_active_pokémon.spd > p1_active_pokémon.spd and p2_active_pokémon.hp > 0:
         dramatic_effect(f'{p2_active_pokémon.name} used {p2_turnchoice.name}!💥')
         time.sleep(1.5)
         is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-        if is_effective == 1.5 and p2_damage > 0:
+        if is_effective > 1 and p2_damage > 0:
             dramatic_effect("It's super effective!💥💥")
             time.sleep(1.5)
         p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
         move_effect(p2_active_pokémon, p2_turnchoice, p1_active_pokémon)
-        dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
-    dramatic_effect(f"{player1_name}'s {p1_active_pokémon.name} used {p1_turnchoice.name}💥")
-
-    time.sleep(1.5)
-    is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-    if is_effective == 1.5 and p1_damage > 0:
-        dramatic_effect("It's super effective!💥💥")
+        dramatic_effect(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
+    if p1_active_pokémon.hp > 0:
+        dramatic_effect(f"{player1_name}'s {p1_active_pokémon.name} used {p1_turnchoice.name}💥")
         time.sleep(1.5)
-    p2_active_pokémon.hp = p2_active_pokémon.hp - p1_damage
-    move_effect(p1_active_pokémon, p1_turnchoice, p2_active_pokémon)
-    dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
+        is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
+        if is_effective > 1 and p1_damage > 0:
+            dramatic_effect("It's super effective!💥💥")
+            time.sleep(1.5)
+        p2_active_pokémon.hp = p2_active_pokémon.hp - p1_damage
+        move_effect(p1_active_pokémon, p1_turnchoice, p2_active_pokémon)
+        if p2_active_pokémon.hp > 0:
+            dramatic_effect(f'{p2_active_pokémon.name} has 💚{p2_active_pokémon.hp} left')
+        else:
+            break
 
-    dramatic_effect(f'{p1_active_pokémon} used {p1_turnchoice.name}!💥')
-    time.sleep(1.5)
-    is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
-    if is_effective == 1.5 and p2_damage > 0:
-        dramatic_effect("It's super effective!💥💥")
         time.sleep(1.5)
-    p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
-    move_effect(p2_active_pokémon, p2_turnchoice, p1_active_pokémon)
-    dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
+    if p2_active_pokémon.hp > 0:
+        dramatic_effect(f"{player2_name}'s {p2_active_pokémon.name} used {p2_turnchoice.name}💥")
+        is_effective = super_effective(p2_turnchoice, p1_active_pokémon)
+        if is_effective > 1 and p2_damage > 0:
+            dramatic_effect("It's super effective!💥💥")
+            time.sleep(1.5)
+        p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
+        move_effect(p2_active_pokémon, p2_turnchoice, p1_active_pokémon)
+        if p1_active_pokémon.hp > 0:
+            dramatic_effect(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
+        else:
+            break
 
 #This part happens only if one pkmn is KO'd
-if charizard1.hp == 0 and charizard2.hp == 0:
+if p1_active_pokémon.hp <= 0 and p2_active_pokémon.hp <= 0:
     dramatic_effect("Eh!? What's this!!?")
     dramatic_effect("Both Pokémon are knocked out, It's a tie!!!")
     dramatic_effect('🎊🎉🎆')
-elif charizard1.hp == 0:
+elif p1_active_pokémon.hp <= 0:
     dramatic_effect('The battle has come to an end!!!')
     dramatic_effect(f"{player1_name}'s {p1_active_pokémon.name}"
                     " can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player2_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')
-elif charizard2.hp == 0:
+elif p2_active_pokémon.hp <= 0:
     dramatic_effect('The battle has come to an end!!!')
     dramatic_effect(f"{player2_name}'s {p2_active_pokémon.name}"
                     " can no longer fight!!!")

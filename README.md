@@ -2,3 +2,8 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=18899843&assignment_repo_type=AssignmentRepo)
 Please put all files and music in a single folder
 Do not change file/function/object names. The game will crash otherwise
+To run this game you will need to install the pygame library in your computer:
+    1. push <Windows> + R in your keyboard
+    2. open cmd
+    3. write "pip install pygame"
+    4. update if neccesary, following the instructions given by the computer
