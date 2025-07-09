@@ -1,5 +1,5 @@
 # Title: Pokémon Battle Pyhon Simulator
-# Author: Ezequiel Ordonez
+# Author: Ezequiel Ordoñez
 # Version number: 1.0
 """Desctription: A Pokémon battle simulator coded in Python.
 

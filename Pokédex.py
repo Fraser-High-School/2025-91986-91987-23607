@@ -69,9 +69,9 @@ class move:
     Other attributes present in the orignal material were disregarded as they
     will not be used for this simulation, like priority, field effects, etc.
     """
-    def __init__(self, move_name, base_power, effect_chance, acc, ptype,
+    def __init__(self, name, base_power, effect_chance, acc, ptype,
                   crit_rate, category, effect_id, effect_qty):
-        self.move_name = move_name
+        self.name = name
         self.base_power = base_power
         self.acc = acc
         self.ptype = ptype
@@ -148,3 +148,4 @@ defensive_swampert = [ice_beam, surf, life_dew, amnesia]
 #Togekisss movesets
 toolbox_togekiss = [ancient_power, water_pulse, shock_wave, gust]
 tank_togekiss = [charm, life_dew, shadow_ball, magical_leaf]
+# Mew

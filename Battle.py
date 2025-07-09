@@ -5,6 +5,7 @@ import time
 from Pokédex import *
 import winsound
 #Lists
+one_to_four = ['1', '2', '3', '4']
 #functions
 
 
@@ -211,7 +212,7 @@ def move_effect(attacker, move, target):
         dramatic_effect(f'{attacker.name} now has 💚{attacker.hp} hp left.')
     elif move.effect_id == 'bellydrum':
         attacker.hp = round(attacker.hp - attacker.og_hp * 0.5)
-        attacker.atk = round(attacker.atk * move.effect_qtt)
+        attacker.atk = round(attacker.atk * move.effect_qty)
         dramatic_effect(f"{attacker} lost HALF of its hp!")
         dramatic_effect(f"{attacker}'s attack raised to its maximum ✊🆙")
     elif move.effect_id == 'all':
@@ -334,9 +335,12 @@ player2_name = 'George P Lucas'
 dramatic_effect(f'A battle has started between {player1_name} and {player2_name}')
 time.sleep(1.5)
 p1_active_pokémon = charizard1
-p1_active_pokémon.moves = toolbox_charizard
-p2_active_pokémon = charizard2
-p2_active_pokémon.moves = toolbox_charizard
+p1_active_pokémon.moves = bellydrum_charizard
+p2_active_pokémon = swampert2
+p2_active_pokémon.moves = defensive_swampert
+p1_active_pokémon.original_stats()
+p2_active_pokémon.original_stats()
+
 dramatic_effect(f"{player1_name}: '{p1_active_pokémon.name}, go!' ")
 time.sleep(1)
 dramatic_effect(f"{player2_name}: '{p2_active_pokémon.name}, go!' ")
@@ -346,59 +350,58 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
     #Pokemon battle loop starts here
     dramatic_effect(f'{player1_name}, choose your move')
     for index, listed_move in enumerate(p1_active_pokémon.moves, start = 1):
-        dramatic_effect(f"{index}. {listed_move.move_name}")
+        dramatic_effect(f"{index}. {listed_move.name}")
         time.sleep(0.5)
     p1_turnchoice = input(f"{player1_name}, choose your move, or type <hp> to know"
                         " your active Pokémon's remaining hp ").lower()
 
-    while (p1_turnchoice < 1 and p1_turnchoice > 4) and p1_turnchoice != 'hp':
-        dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
-                        'as it did not understand your comand\x1B[23m')
-        p1_turnchoice = input(f"{player1_name}, choose your move by typing its number on the list"
-                              ", or check your Pokémon's hp by typing <hp> ").lower()
-    if p1_turnchoice == 'hp':
-        p(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
-        for index, listed_move in enumerate(p1_active_pokémon.moves, start = 1):
-            dramatic_effect(f"{index}. {listed_move.move_name}")
-            time.sleep(0.5)
-        p1_turnchoice = input(f"{player1_name}, choose your move from the list ").lower()
-
-        while p1_turnchoice < 1 and p1_turnchoice > 4:
-            dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
-                        'as it did not understand your comand\x1B[23m')
+    while p1_turnchoice not in one_to_four:
+        if p1_turnchoice == 'hp':
+            p(f'{p1_active_pokémon.name} has 💚{p1_active_pokémon.hp} left')
             for index, listed_move in enumerate(p1_active_pokémon.moves, start = 1):
-                dramatic_effect(f"{index}. {listed_move.move_name}")
+                dramatic_effect(f"{index}. {listed_move.name}")
                 time.sleep(0.5)
-            p1_turnchoice = input(f"{player1_name}, choose your move ").lower()
-    p1_damage = damage_calculation(p1_turnchoice - 1, p1_active_pokémon, p2_active_pokémon)
+            p1_turnchoice = input(f"{player1_name}, choose your move"
+                                   " from the list ").lower()
+        else:
+            dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
+                            'as it did not understand your comand\x1B[23m')
+            for index, listed_move in enumerate(p1_active_pokémon.moves, start = 1):
+                dramatic_effect(f"{index}. {listed_move.name}")
+                time.sleep(0.5)
+            p1_turnchoice = input(f"{player1_name}, choose your move by typing its number on "
+                              "the list, or check your Pokémon's hp by typing <hp> ").lower()
+
+    p1_turnchoice = p1_active_pokémon.moves[int(p1_turnchoice) - 1]
+    p1_damage = damage_calculation(p1_turnchoice, p1_active_pokémon, p2_active_pokémon)
+# Trainer 2's turn starts here
+    dramatic_effect(f'{player2_name}, choose your move')
     for index, listed_move in enumerate(p2_active_pokémon.moves, start = 1):
-        dramatic_effect(f"{index}. {listed_move.move_name}")
+        dramatic_effect(f"{index}. {listed_move.name}")
         time.sleep(0.5)
     p2_turnchoice = input(f"{player2_name}, choose your move by typing its number on the list,"
                         " or type <hp> to check your active Pokémon's remaining hp ").lower()
 
-    while (p2_turnchoice < 1 and p2_turnchoice > 4) and p2_turnchoice != 'hp':
-        dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
-                        'as it did not understand your comand\x1B[23m')
-        for index, listed_move in enumerate(p2_active_pokémon.moves, start = 1):
-            dramatic_effect(f"{index}. {listed_move.move_name}")
-            time.sleep(0.5)
-        p2_turnchoice = input(f"{player2_name}, choose your move "
-                            "or check your Pokémon's hp with 'hp' ").lower()
-    if p2_turnchoice == 'hp':
-        p(f'{p2_active_pokémon.name} has 💚{p2_active_pokémon.hp} left')
-        for index, listed_move in enumerate(p2_active_pokémon.moves, start = 1):
-            dramatic_effect(f"{index}. {listed_move.move_name}")
-            time.sleep(0.5)
-        p2_turnchoice = input(f"{player2_name}, choose your move from the list above ").lower()
-
-        while p2_turnchoice < 1 and p2_turnchoice > 4:
-            dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
-                            'as it did not understand your comand\x1B[23m')
+    while p2_turnchoice not in one_to_four:
+        if p2_turnchoice == 'hp':
+            p(f'{p2_active_pokémon.name} has 💚{p2_active_pokémon.hp} left')
+            for index, listed_move in enumerate(p2_active_pokémon.moves, start = 1):
+                dramatic_effect(f"{index}. {listed_move.name}")
+                time.sleep(0.5)
             p2_turnchoice = input(f"{player2_name}, choose your move from the list above ").lower()
-    p2_damage = damage_calculation(p2_turnchoice - 1, p2_active_pokémon, p1_active_pokémon)
+        else:
+            dramatic_effect('\x1B[3mYour Pokémon looks confused at you, '
+                        'as it did not understand your comand\x1B[23m')
+            for index, listed_move in enumerate(p2_active_pokémon.moves, start = 1):
+                dramatic_effect(f"{index}. {listed_move.name}")
+                time.sleep(0.5)
+            p2_turnchoice = input(f"{player2_name}, choose your move "
+                            "or check your Pokémon's hp with 'hp' ").lower()
+
+    p2_turnchoice = p2_active_pokémon.moves[int(p2_turnchoice) - 1]
+    p2_damage = damage_calculation(p2_turnchoice, p2_active_pokémon, p1_active_pokémon)
     if p2_active_pokémon.spd > p1_active_pokémon.spd:
-        dramatic_effect(f'{p2_active_pokémon} used {p2_turnchoice.name}!💥')
+        dramatic_effect(f'{p2_active_pokémon.name} used {p2_turnchoice.name}!💥')
         time.sleep(1.5)
         is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
         if is_effective == 1.5 and p2_damage > 0:
@@ -407,7 +410,7 @@ while p1_active_pokémon.hp > 0 or p2_active_pokémon.hp > 0:
         p1_active_pokémon.hp = p1_active_pokémon.hp - p2_damage
         move_effect(p2_active_pokémon, p2_turnchoice, p1_active_pokémon)
         dramatic_effect(f'{p2_active_pokémon} has 💚{p2_active_pokémon.hp} left')
-    dramatic_effect(f"{player1_name}'s {p1_active_pokémon} used {p1_turnchoice.name}💥")
+    dramatic_effect(f"{player1_name}'s {p1_active_pokémon.name} used {p1_turnchoice.name}💥")
 
     time.sleep(1.5)
     is_effective = super_effective(p1_turnchoice, p2_active_pokémon)
