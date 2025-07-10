@@ -104,7 +104,7 @@ metal_claw = move('metal claw', 50, 10, 95, 'steel', 417, 'physical', 'atk', 1.5
 #Triple Arrows Decidueye moves
 triple_arrows = move('triple arrows', 90, 50, 100, 'fighting', 1250, 'physical', 'opp_def', 0.66)
 leaf_blade = move('leaf blade', 90, 0, 100, 'grass', 1250, 'physical', 'na', 0)
-brave_bird = move('brave bird', 120, 100, 100, 'flying', 417, 'physical', 'recoil', 33)
+brave_bird = move('brave bird', 120, 100, 100, 'flying', 417, 'physical', 'recoil', 0.33)
 steel_wing = move('steel wing', 70, 10, 90, 'steel', 417, 'physical', 'def', 1.5)
 
 #Swords Dance Decidueye moves

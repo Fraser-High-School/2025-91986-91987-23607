@@ -158,6 +158,7 @@ def super_effective(move, target):
 
 def damage_calculation(move, attacker, target):
     """Damage calculation explained:
+
     50 is the level of the attacking pkmn, but I chose to just put 50
     as my program doesn't have any other interaction with the pkmn's level.
     This functions returns the damage a move does. It is the core of the
@@ -328,5 +329,41 @@ def move_effect(attacker, move, target):
            else:
                 dramatic_effect(f"Foe {target.name}'s special attack rose!")
 
+def hit_order(faster_pkmn, slower_pkmn, dmg_fast, dmg_slow, move_fast, move_slow, trainer_fast, trainer_slow):
+    dramatic_effect(f"{trainer_fast}'s {faster_pkmn.name} used {move_fast.name}💥")
+    time.sleep(1.5)
+    is_effective = super_effective(move_fast, slower_pkmn)
+    if is_effective > 1 and dmg_fast > 0:
+        dramatic_effect("It's super effective!💥💥")
+        time.sleep(1.5)
+    slower_pkmn.hp = slower_pkmn.hp - dmg_fast
+    move_effect(faster_pkmn, move_fast, slower_pkmn)
+    
+    if slower_pkmn.hp < 1:
+        dramatic_effect(f"{slower_pkmn.name} fainted!😵‍💫")
+        return 2
+    elif faster_pkmn.hp < 1:
+        dramatic_effect(f"{faster_pkmn.name} fainted! 😵‍💫")
+        return 1
+    else:
+        dramatic_effect(f'{slower_pkmn.name} has 💚{slower_pkmn.hp} left')
+        dramatic_effect(f"{trainer_slow}'s {slower_pkmn.name} used {move_slow.name}💥")
+        time.sleep(1.5)
+        is_effective = super_effective(move_slow, faster_pkmn)
+        if is_effective > 1 and dmg_slow > 0:
+            dramatic_effect("It's super effective!💥💥")
+            time.sleep(1.5)
+        faster_pkmn.hp = faster_pkmn.hp - dmg_slow
+        move_effect(slower_pkmn, move_slow, faster_pkmn)
+
+    if faster_pkmn.hp < 1:
+        dramatic_effect(f"{faster_pkmn.name} fainted! 😵‍💫")
+        return 1
+    elif slower_pkmn.hp < 1:
+        dramatic_effect(f"{slower_pkmn.name} fainted!😵‍💫")
+        return 2
+    else:
+        dramatic_effect(f'{faster_pkmn.name} has 💚{faster_pkmn.hp} left')
+    return 0
 
 #Main

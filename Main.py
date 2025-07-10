@@ -17,7 +17,6 @@ from Pokédex import *
 from Battle import *
 one_to_four = ['1', '2', '3', '4']
 # Lists, dictionaries, and predefined variables
-taken = []
 p1_pokémon_team = []
 p2_pokémon_team = []
 decidueye_movesets = ['1. Swords Dance + Trailblaze',
@@ -105,13 +104,14 @@ for pkmn in range(3):
                             "doing great damage thanks to its high special attack.")
             time.sleep(1)
         elif pkmn_choice == 'decidueye' or pkmn_choice == 'hisuian decidueye' or pkmn_choice == '2':
-            if decidueye1 in taken:
+            if decidueye1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
                 pkmn_selected = False
+                pkmn_choice = ''
+                time.sleep(1)
             else:
-                taken.append(decidueye1)
                 p1_pokémon_team.append(decidueye1)
                 dramatic_effect('Choose a moveset')
                 """Here is the part in which the user chooses their Pokémon's moveset.
@@ -143,14 +143,13 @@ for pkmn in range(3):
                     moveset_choice = input('')
 
         elif pkmn_choice == 'charizard' or pkmn_choice == '1':
-            if charizard1 in taken:
+            if charizard1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
                 pkmn_selected = False
-                break
+                pkmn_choice = ''
             else:
-                taken.append(charizard1)
                 p1_pokémon_team.append(charizard1)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -178,12 +177,12 @@ for pkmn in range(3):
                     moveset_choice = input('')
 
         elif pkmn_choice == 'swampert' or pkmn_choice == '3':
-            if swampert1 in taken:
+            if swampert1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 pkmn_selected = False
+                pkmn_choice = ''
             else:
-                taken.append(swampert1)
                 p1_pokémon_team.append(swampert1)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -211,12 +210,12 @@ for pkmn in range(3):
                     moveset_choice = input('')
 
         elif pkmn_choice == 'togekiss' or pkmn_choice == '4':
-            if togekiss1 in taken:
+            if togekiss1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 pkmn_selected = False
+                pkmn_choice = ''
             else:
-                taken.append(togekiss1)
                 p1_pokémon_team.append(togekiss1)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -288,13 +287,14 @@ for pkmn in range(3):
                             "doing great damage thanks to its high special attack.")
             time.sleep(1)
         elif pkmn_choice == 'decidueye' or pkmn_choice == 'hisuian decidueye' or pkmn_choice == '2':
-            if decidueye2 in taken:
+            if decidueye2 in p2_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
                 pkmn_selected = False
+                pkmn_choice = ''
+                time.sleep(1)
             else:
-                taken.append(decidueye2)
                 p2_pokémon_team.append(decidueye2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -321,13 +321,14 @@ for pkmn in range(3):
                     moveset_choice = input('')
 
         elif pkmn_choice == 'charizard' or pkmn_choice == '1':
-            if charizard2 in taken:
+            if charizard2 in p2_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
                 pkmn_selected = False
+                pkmn_choice = ''
+                time.sleep(1)
             else:
-                taken.append(charizard2)
                 p2_pokémon_team.append(charizard2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -355,13 +356,14 @@ for pkmn in range(3):
                     moveset_choice = input('')
 
         elif pkmn_choice == 'swampert' or pkmn_choice == '3':
-            if swampert2 in taken:
+            if swampert2 in p2_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 pkmn_selected = False
                 time.sleep(1)
+                pkmn_choice = ''
+                time.sleep(1)
             else:
-                taken.append(swampert2)
                 p2_pokémon_team.append(swampert2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -389,12 +391,13 @@ for pkmn in range(3):
                     moveset_choice = input('')
 
         elif pkmn_choice == 'togekiss' or pkmn_choice == '4':
-            if togekiss2 in taken:
+            if togekiss2 in p2_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 pkmn_selected = False
+                pkmn_choice = ''
+                time.sleep(1)
             else:
-                taken.append(togekiss2)
                 p2_pokémon_team.append(togekiss2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
@@ -436,7 +439,9 @@ for pkmn in p2_pokémon_team:
 
 
 #Battle starts here
-for chosen in taken:
+for chosen in p1_pokémon_team:
+    chosen.original_stats()
+for chosen in p2_pokémon_team:
     chosen.original_stats()
 dramatic_effect(f'A battle has started between {player1_name} and {player2_name}')
 time.sleep(1.5)
@@ -507,75 +512,30 @@ while p1_pokémon_team[active1].hp > 0 and p2_pokémon_team[active2].hp > 0:
     p2_turnchoice = p2_pokémon_team[active2].moves[int(p2_turnchoice) - 1]
     p2_damage = damage_calculation(p2_turnchoice, p2_pokémon_team[active2], p1_pokémon_team[active1])
 # Damage Step
-    if p2_pokémon_team[active2].spd > p1_pokémon_team[active1].spd and p2_pokémon_team[active2].hp > 0:
-        dramatic_effect(f"{player2_name}'s {p2_pokémon_team[active2].name} used {p2_turnchoice.name}!💥")
-        time.sleep(1.5)
-        is_effective = super_effective(p1_turnchoice, p2_pokémon_team[active2])
-        if is_effective > 1 and p2_damage > 0:
-            dramatic_effect("It's super effective!💥💥")
-            time.sleep(1.5)
 
-        p1_pokémon_team[active1].hp = p1_pokémon_team[active1].hp - p2_damage
-        move_effect(p2_pokémon_team[active2], p2_turnchoice, p1_pokémon_team[active1])
-
-        if p1_pokémon_team[active1].hp > 0:
-            dramatic_effect(f'{p1_pokémon_team[active1].name} has 💚{p1_pokémon_team[active1].hp} left')
+    if p2_pokémon_team[active2].spd > p1_pokémon_team[active1].spd:
+        fainted = hit_order(p2_pokémon_team[active2], p1_pokémon_team[active1], p2_damage,
+                   p1_damage, p2_turnchoice, p1_turnchoice, player2_name, player1_name)
+        if fainted == 1:
+            fainted = 2
+        elif fainted == 2:
+            fainted = 1
+    else:
+        fainted = hit_order(p1_pokémon_team[active1], p2_pokémon_team[active2], p1_damage,
+                   p2_damage, p1_turnchoice, p2_turnchoice, player1_name, player2_name)
+    
+    if fainted == 1:
+        if active1 + 1 > 2:
+            break
         else:
-            dramatic_effect(f" {p1_pokémon_team[active1].name} fainted!😵‍💫")
             active1 = active1 + 1
             dramatic_effect(f"{player1_name}: '{p1_pokémon_team[active1].name}, go!'")
-            time.sleep(1.5)
-    elif p2_pokémon_team[active2].hp <= 0:
-        dramatic_effect(f" {p2_pokémon_team[active2].name} fainted!😵‍💫")
-        if active2 >= 2:
+    if fainted == 2:
+        if active2 + 1 > 2:
             break
-        active2 = active1 + 2
-        dramatic_effect(f"{player2_name}: '{p2_pokémon_team[active2].name}, go!'")
-
-    if p1_pokémon_team[active1].hp > 0:
-        dramatic_effect(f"{player1_name}'s {p1_pokémon_team[active1].name} used {p1_turnchoice.name}💥")
-        time.sleep(1.5)
-        is_effective = super_effective(p1_turnchoice, p2_pokémon_team[active2])
-        if is_effective > 1 and p1_damage > 0:
-            dramatic_effect("It's super effective!💥💥")
-            time.sleep(1.5)
-
-        p2_pokémon_team[active2].hp = p2_pokémon_team[active2].hp - p1_damage
-        move_effect(p1_pokémon_team[active1], p1_turnchoice, p2_pokémon_team[active2])
-
-        if p2_pokémon_team[active2].hp > 0:
-            dramatic_effect(f'{p2_pokémon_team[active2].name} has 💚{p2_pokémon_team[active2].hp} left')
         else:
-            dramatic_effect(f"{p2_pokémon_team[active2].name} fainted!😵‍💫")
             active2 = active2 + 1
-            dramatic_effect(f"{player1_name}: '{p1_pokémon_team[active1].name}, go!'")
-            time.sleep(1.5)
-    elif p1_pokémon_team[active1].hp <= 0:
-        dramatic_effect(f" {p1_pokémon_team[active1].name} fainted!😵‍💫")
-        if active1 >= 2:
-            break
-        active1 = active1 + 1
-        dramatic_effect(f"{player1_name}: '{p1_pokémon_team[active1].name}, go!'")
-
-    if p2_pokémon_team[active2].hp > 0:
-        dramatic_effect(f"{player2_name}'s {p2_pokémon_team[active2].name} used {p2_turnchoice.name}💥")
-        is_effective = super_effective(p2_turnchoice, p1_pokémon_team[active1])
-        if is_effective > 1 and p2_damage > 0:
-            dramatic_effect("It's super effective!💥💥")
-            time.sleep(1.5)
-        p1_pokémon_team[active1].hp = p1_pokémon_team[active1].hp - p2_damage
-        move_effect(p2_pokémon_team[active2], p2_turnchoice, p1_pokémon_team[active1])
-        if p1_pokémon_team[active1].hp > 0:
-            dramatic_effect(f'{p1_pokémon_team[active1].name} has 💚{p1_pokémon_team[active1].hp} left')
-        else:
-            active1 = active1 + 1
-            dramatic_effect(f"{player1_name}: '{p1_pokémon_team[active1].name}, go!'")
-    elif p2_pokémon_team[active2].hp <= 0:
-        dramatic_effect(f"{p2_pokémon_team[active2].name} fainted!😵‍💫")
-        if active2 >= 2:
-            break
-        active2 = active2 + 1
-        dramatic_effect(f"{player2_name}: '{p2_pokémon_team[active2].name}, go!'")
+            dramatic_effect(f"{player2_name}: '{p2_pokémon_team[active2].name}, go!'")
 
 #This part happens only if one pkmn is KO'd
 if p1_pokémon_team[active1].hp <= 0 and p2_pokémon_team[active2].hp <= 0:
@@ -584,13 +544,13 @@ if p1_pokémon_team[active1].hp <= 0 and p2_pokémon_team[active2].hp <= 0:
     dramatic_effect('🎊🎉🎆')
 elif p1_pokémon_team[active1].hp <= 0:
     dramatic_effect('The battle has come to an end!!!')
-    dramatic_effect(f"{player1_name}'s {p1_pokémon_team[active1].name}"
+    dramatic_effect(f"{player1_name}'s Pokémon team"
                     " can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player2_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')
 elif p2_pokémon_team[active2].hp <= 0:
     dramatic_effect('The battle has come to an end!!!')
-    dramatic_effect(f"{player2_name}'s {p2_pokémon_team[active2].name}"
+    dramatic_effect(f"{player2_name}'s Pokémon team"
                     " can no longer fight!!!")
     dramatic_effect(f"The winner is: 🏆🏆{player1_name}🏆🏆!!!")
     dramatic_effect('🎊🎊🎉🎉🎆🎆')
