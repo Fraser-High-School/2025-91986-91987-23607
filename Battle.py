@@ -23,17 +23,23 @@ def dramatic_effect(txt):
 
 
 def p(strin):
+    """print and add spacing
+    
+    I made this function with the purpose of shortening print() to p()
+    """
     print(f'{strin}\n')
 
 def crit_hit(move):
-    """Choose a random number from 1 to 10K> If it is smaller than the argument's critical hit ratio, return 1.5
+    """Choose a random number from 1 to 10K, If it is smaller than the
+    argument's critical hit ratio, return 1.5
 
     crit_hit is an adaptation of how critical hits work in the original game.
-    Most moves have a critical hit chance of 4.17%, while a few have 12.5% or more.
-    a critical hit is when an attack does more damage than it is supposed to do by pure randomness."""
-    security_chech = hasattr(move, 'crit_rate')
-    if security_chech is False:
-        return "error: the move selected (if any) does not have a critical hit rate"
+    Most moves have a critical hit chance of 4.17%, while a few have 12.5% or
+    more. a critical hit is when an attack does more damage than it is supposed 
+    to do by pure randomness.
+    """
+    if hasattr(move, 'crit_rate') is False:
+        return "error: the move selected (if any) doesn't have a critical hit rate"
     chance = random.randint(1, 10000)
     if chance <= move.crit_rate:
         return 1.5
@@ -42,12 +48,15 @@ def crit_hit(move):
 
 
 def stab(move, attacker):
-    """"stab" (Same Type Attack Bounus) is a function that increases
-    damage output if the Pokémon has the same type as the attack it is using
+    """Find if the move has the same type as the attacker. If true, return 1.5
+
+    "stab" (Same Type Attack Bounus) is a function that increases
+    damage output if the Pokémon has the same type as the attack it is using.
+    The function returns 1.5 if the attacker shares 1 type with the move. This
+    number is then used during damage calculation as a multiplier for damage.
     """
-    security_chech = hasattr(move, 'ptype')
-    if security_chech is False:
-        return "error: the move selected (if any) does not have attribute 'ptype'"
+    if hasattr(move, 'ptype') is False:
+        return "error: the move selected (if any) doesn't have a type"
     if move.ptype in attacker.typing:
         return 1.5
     else:
@@ -55,14 +64,15 @@ def stab(move, attacker):
 
 
 def super_effective(move, target):
-    """super_effective is an adaptation of how super effective hits work
-    in the game. I feel like this function could be optimised, but I don't know
-    if I have the time, and it seems to work well. This function returns a value
+    """Find if the type of the move used should cause extra damage to the target
+
+    super_effective is an adaptation of how super effective hits work in the 
+    game. I feel like this function could be optimised, but I don't know if I
+    have the time, and it seems to work well. This function returns a value
     between 0.25 and 4, which is then used as a multiplier in damage_calculation
     """
     effectiveness = 1
-    security_chech = hasattr(move, 'ptype')
-    if security_chech is False:
+    if hasattr(move, 'ptype') is False:
         return "error: the move selected (if any) does not have attribute 'ptype'"
     # Fire type interactions
     if move.ptype == 'fire':
@@ -157,17 +167,20 @@ def super_effective(move, target):
 
 
 def damage_calculation(move, attacker, target):
-    """Damage calculation explained:
+    """Calculate and return the damage a move does to the target.
 
-    50 is the level of the attacking pkmn, but I chose to just put 50
-    as my program doesn't have any other interaction with the pkmn's level.
-    This functions returns the damage a move does. It is the core of the
-    battle system, so I must make sure it works properly. Damage of a move
-    always varies between 100% and 85%"""
-    security_check = hasattr(attacker, 'hp')
-    if security_check is False:
-        return "attacker (if any) has no hp attribute, thus, it is not a Pokémon"
-        # Error message to detect if a Pokémon is being used as an attacker.
+    50 is the level of the attacking pkmn, but I chose to just put 50 as my 
+    program doesn't have any other interaction with the pkmn's level. Damage
+    done by a move always varies between 100% and 85%. The function first
+    determines which attack and defense will be used for the calculation with
+    the category attribute of the move, like in the original material. Then it
+    multiplies the attacker's level x2, divides it by 50, and adds 2. Multiplies
+    the result by the move's base power and the attackers attack (or special
+    attack, if the move is special) divided by the target's defence (or special).
+    All of this is divided by 50 and 2 is added at the end. Then, other functions,
+    like stab and supper_effective, act as multipliers to increase or decrease
+    the final result, which is the hp to be reduced from the target.
+    """
     if move.category == 'special':
         damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
@@ -181,18 +194,23 @@ def damage_calculation(move, attacker, target):
 
 
 def accuaracy_check(move):
-    """In the videogames, all moves have accuaracy and some of them can fail.
-    there are also moves and abilities that can affect how likely it is
-    that a Pokémon lands a certain move. In this simulation,
-    the only move that can fail is Air Slash, but adding this function will help
-    in case the game is updated or expanded."""
+    """Produce a random integer and compare with the move's accuaracy to decide
+    if it lands.
+    
+    In the videogames, all moves have accuaracy and some of them can fail. there
+    are also moves and abilities that can affect how likely it is that a Pokémon
+    lands a certain move. In this simulation, the only move that can fail is
+    Air Slash, but adding this function will help in case the game is expanded.
+    All the other mvoes in this adaptation have an accuaracy of 100, meaning
+    they do not fail under normal conditions.
+    """
     security_check = hasattr(move, 'acc')
     if security_check is False:
         return "error: move selected does not have attribute 'acc'(accuaracy)"
     if random.randint(1, 100) <= move.acc:
         return True
     else:
-        return 'the move failed!'
+        dramatic_effect('the move failed!')
 
 
 def move_effect(attacker, move, target):
@@ -330,6 +348,14 @@ def move_effect(attacker, move, target):
                 dramatic_effect(f"Foe {target.name}'s special attack rose!")
 
 def hit_order(faster_pkmn, slower_pkmn, dmg_fast, dmg_slow, move_fast, move_slow, trainer_fast, trainer_slow):
+    """Apply damage to both Pokémon in order, and print the corresponding message.
+
+    This function applies the damage calculated during the battle phase to both
+    Pokémon in order, from the fastest to the slowest. It also displays text to
+    inform the user of the system status, and at the end, it checks if either
+    Pokémon has ben knocked out, then returns a number corresponding to the
+    Pokémon that was KO'd or 0 if both can still fight.
+    """
     dramatic_effect(f"{trainer_fast}'s {faster_pkmn.name} used {move_fast.name}💥")
     time.sleep(1.5)
     is_effective = super_effective(move_fast, slower_pkmn)
