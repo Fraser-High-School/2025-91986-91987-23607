@@ -29,6 +29,7 @@ def p(strin):
     """
     print(f'{strin}\n')
 
+
 def crit_hit(move):
     """Choose a random number from 1 to 10K, If it is smaller than the
     argument's critical hit ratio, return 1.5
@@ -184,10 +185,14 @@ def damage_calculation(move, attacker, target):
     if move.category == 'special':
         damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.spatk / target.spdif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
+        if damage == 0:
+            dramatic_effect(f"{target.name} did not take damage from {move.name}!")
         return damage
     elif move.category == 'physical':
         damage = ((2 * 50 / 5 + 2) * move.base_power * (attacker.atk / target.dif) / 50 + 2) * crit_hit(move) * stab(move, attacker) * super_effective(move, target) * round(random.uniform(0.85, 1), 2)
         damage = round(damage)
+        if damage == 0:
+            dramatic_effect(f"{target.name} did not take damage from {move.name}!")
         return damage
     elif move.category == 'status':
         return 0
@@ -347,6 +352,7 @@ def move_effect(attacker, move, target):
            else:
                 dramatic_effect(f"Foe {target.name}'s special attack rose!")
 
+
 def hit_order(faster_pkmn, slower_pkmn, dmg_fast, dmg_slow, move_fast, move_slow, trainer_fast, trainer_slow):
     """Apply damage to both Pokémon in order, and print the corresponding message.
 
@@ -391,5 +397,6 @@ def hit_order(faster_pkmn, slower_pkmn, dmg_fast, dmg_slow, move_fast, move_slow
     else:
         dramatic_effect(f"{trainer_fast}'s {faster_pkmn.name} has 💚{faster_pkmn.hp} left")
     return 0
+
 
 #Main
