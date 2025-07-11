@@ -77,7 +77,7 @@ for pkmn in range(3):
     while pkmn_selected is False:
         dramatic_effect("Enter the name of the Pokémon you want to choose or write "
                         "'info <name of the Pokémon>' to know more about a certain Pokémon. ")
-        pkmn_choice = input('')
+        pkmn_choice = input('Your choice: ')
         pkmn_choice = pkmn_choice.lower()
         time.sleep(1)
         if pkmn_choice == 'info decidueye' or pkmn_choice == 'info hisuian decidueye':
@@ -108,11 +108,9 @@ for pkmn in range(3):
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
-                pkmn_selected = False
                 pkmn_choice = ''
                 time.sleep(1)
             else:
-                p1_pokémon_team.append(decidueye1)
                 dramatic_effect('Choose a moveset')
                 """Here is the part in which the user chooses their Pokémon's moveset.
                 I decided not to include a full description of the movesets
@@ -123,124 +121,130 @@ for pkmn in range(3):
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 if moveset_choice == '2' or moveset_choice == 'Triple Arrows + Leaf Blade':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Triple Arrows Hisuian Decidueye' successfully.")
                     pkmn_selected = True
                     # A list containing the moves is assigned to the Pokémon
+                    p1_pokémon_team.append(decidueye1)
                     p1_pokémon_team[pkmn].moves = triplearrows_decidueye
                     break
                 elif moveset_choice == '1' or moveset_choice == 'Swords Dance + Trailblaze':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Swords Dance Hisuian Decidueye' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(decidueye1)
                     p1_pokémon_team[pkmn].moves = swordsdance_decidueye
                     break
                 else:
                     dramatic_effect('Sorry, but I did not understand your comand,'
                                     ' please try again')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
 
         elif pkmn_choice == 'charizard' or pkmn_choice == '1':
             if charizard1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
-                pkmn_selected = False
                 pkmn_choice = ''
             else:
-                p1_pokémon_team.append(charizard1)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in charizard_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 moveset_choice = moveset_choice.lower()
                 if moveset_choice == '2' or moveset_choice == 'belly drum':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Belly Drum Charizard' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(charizard1)
                     p1_pokémon_team[pkmn].moves = bellydrum_charizard
                     break
                 elif moveset_choice == '1' or moveset_choice == 'special attacker toolbox':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Toolbox Charizard' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(charizard1)
                     p1_pokémon_team[pkmn].moves = toolbox_charizard
                     break
                 else:
                     dramatic_effect('Sorry, but I did not understand your comand, '
                                     'please try again ')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
 
         elif pkmn_choice == 'swampert' or pkmn_choice == '3':
             if swampert1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
-                pkmn_selected = False
                 pkmn_choice = ''
             else:
-                p1_pokémon_team.append(swampert1)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in swampert_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 moveset_choice = moveset_choice.lower()
                 if moveset_choice == '2' or moveset_choice == 'specially defensive':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Specially Defensive Swampert' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(swampert1)
                     p1_pokémon_team[pkmn].moves = defensive_swampert
                     break
                 elif moveset_choice == '1' or moveset_choice == 'curse':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Curse Swampert' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(swampert1)
                     p1_pokémon_team[pkmn].moves = curse_swampert
                     break
                 else:
                     dramatic_effect('Sorry, but I did not understand your comand,'
                                     ' please try again ')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
 
         elif pkmn_choice == 'togekiss' or pkmn_choice == '4':
             if togekiss1 in p1_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
-                pkmn_selected = False
                 pkmn_choice = ''
             else:
-                p1_pokémon_team.append(togekiss1)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in togekiss_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 moveset_choice = moveset_choice.lower()
                 if moveset_choice == '2' or moveset_choice == 'physical tank':
                     dramatic_effect(f"Congrats {player1_name}, You rented "
                                     "'Physical Tank Togekiss' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(togekiss1)
                     p1_pokémon_team[pkmn].moves = tank_togekiss
                     break
                 elif moveset_choice == '1' or moveset_choice == 'curse':
                     dramatic_effect(f"Congrats {player1_name}, You rented"
                                     " 'Toolbox Togekiss' successfully.")
                     pkmn_selected = True
+                    p1_pokémon_team.append(togekiss1)
                     p1_pokémon_team[pkmn].moves = toolbox_togekiss
                     break
                 else:
-                    dramatic_effect(
-                        'Sorry, but I did not understand your comand, please try again ')
-                    moveset_choice = input('')
+                    dramatic_effect('Sorry, but I did not understand your comand'
+                                    ', please try again ')
+                    pkmn_choice = ''
+                    moveset_choice = ''
         else:
             dramatic_effect("Sorry, but I did not understand your comand. "
                             "Answer with the name of the Pokémon or "
@@ -263,7 +267,7 @@ for pkmn in range(3):
     while pkmn_selected is False:
         dramatic_effect("Enter the name of the Pokémon you want to choose or write "
                         "'info <name of the Pokémon>' to know more about a certain Pokémon. ")
-        pkmn_choice = input('')
+        pkmn_choice = input('Your choice: ')
         pkmn_choice = pkmn_choice.lower()
         time.sleep(1)
         if pkmn_choice == 'info decidueye' or pkmn_choice == 'info hisuian decidueye':
@@ -291,104 +295,107 @@ for pkmn in range(3):
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
-                pkmn_selected = False
                 pkmn_choice = ''
                 time.sleep(1)
             else:
-                p2_pokémon_team.append(decidueye2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in decidueye_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 if moveset_choice == '2' or moveset_choice == 'Triple Arrows + Leaf Blade':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Triple Arrows Hisuian Decidueye' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(decidueye2)
                     p2_pokémon_team[pkmn].moves = triplearrows_decidueye
                     break
                 elif moveset_choice == '1' or moveset_choice == 'Swords Dance + Trailblaze':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Swords Dance Hisuian Decidueye' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(decidueye2)
                     p2_pokémon_team[pkmn].moves = swordsdance_decidueye
                     break
                 else:
                     dramatic_effect('Sorry, but I did not understand your comand,'
                                     ' please try again')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
 
         elif pkmn_choice == 'charizard' or pkmn_choice == '1':
             if charizard2 in p2_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
                 time.sleep(1)
-                pkmn_selected = False
                 pkmn_choice = ''
                 time.sleep(1)
             else:
-                p2_pokémon_team.append(charizard2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in charizard_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 moveset_choice = moveset_choice.lower()
                 if moveset_choice == '2' or moveset_choice == 'belly drum':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Belly Drum Charizard' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(charizard2)
                     p2_pokémon_team[pkmn].moves = bellydrum_charizard
                     break
                 elif moveset_choice == '1' or moveset_choice == 'special attacker toolbox':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Toolbox Charizard' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(charizard2)
                     p2_pokémon_team[pkmn].moves = toolbox_charizard
                     break
                 else:
                     dramatic_effect('Sorry, but I did not understand your comand,'
                                     ' please try again')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
 
         elif pkmn_choice == 'swampert' or pkmn_choice == '3':
             if swampert2 in p2_pokémon_team:
                 dramatic_effect('You have selected that Pokémon already,'
                                 ' please choose a different one')
-                pkmn_selected = False
                 time.sleep(1)
                 pkmn_choice = ''
                 time.sleep(1)
             else:
-                p2_pokémon_team.append(swampert2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in swampert_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice: ')
                 moveset_choice = moveset_choice.lower()
                 if moveset_choice == '2' or moveset_choice == 'specially defensive':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Specially Defensive Swampert' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(swampert2)
                     p2_pokémon_team[pkmn].moves = defensive_swampert
                     break
                 elif moveset_choice == '1' or moveset_choice == 'curse':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Curse Swampert' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(swampert2)
                     p2_pokémon_team[pkmn].moves = curse_swampert
                     break
                 else:
                     dramatic_effect('Sorry, but I did not understand your comand,'
                                     ' please try again ')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
 
         elif pkmn_choice == 'togekiss' or pkmn_choice == '4':
             if togekiss2 in p2_pokémon_team:
@@ -398,31 +405,33 @@ for pkmn in range(3):
                 pkmn_choice = ''
                 time.sleep(1)
             else:
-                p2_pokémon_team.append(togekiss2)
                 dramatic_effect('Choose a moveset')
                 time.sleep(1.5)
                 for movset in togekiss_movesets:
                     p(movset)
                     time.sleep(1)
                 time.sleep(0.5)
-                moveset_choice = input('')
+                moveset_choice = input('Your choice:')
                 moveset_choice = moveset_choice.lower()
                 if moveset_choice == '2' or moveset_choice == 'physical tank':
                     dramatic_effect(f"Congrats {player2_name}, You rented "
                                     "'Physical Tank Togekiss' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(togekiss2)
                     p2_pokémon_team[pkmn].moves = tank_togekiss
                     break
                 elif moveset_choice == '1' or moveset_choice == 'curse':
                     dramatic_effect(f"Congrats {player2_name}, You rented"
                                     " 'Toolbox Togekiss' successfully.")
                     pkmn_selected = True
+                    p2_pokémon_team.append(togekiss2)
                     p2_pokémon_team[pkmn].moves = toolbox_togekiss
                     break
                 else:
                     dramatic_effect(
                         'Sorry, but I did not understand your comand, please try again ')
-                    moveset_choice = input('')
+                    pkmn_choice = ''
+                    moveset_choice = ''
         else:
             dramatic_effect("Sorry, but I did not understand your comand. "
                             "Answer with the name of the Pokémon or "
@@ -469,7 +478,7 @@ while p1_pokémon_team[active1].hp > 0 and p2_pokémon_team[active2].hp > 0:
 
     while p1_turnchoice not in one_to_four:
         if p1_turnchoice == 'hp':
-            p(f'{p1_pokémon_team[active1].name} has 💚{p1_pokémon_team[active1].hp} left')
+            p(f"{player1_name}'s {p1_pokémon_team[active1].name} has 💚{p1_pokémon_team[active1].hp} left")
             for index, listed_move in enumerate(p1_pokémon_team[active1].moves, start = 1):
                 dramatic_effect(f"{index}. {listed_move.name}")
                 time.sleep(0.5)
@@ -496,7 +505,7 @@ while p1_pokémon_team[active1].hp > 0 and p2_pokémon_team[active2].hp > 0:
 
     while p2_turnchoice not in one_to_four:
         if p2_turnchoice == 'hp':
-            p(f'{p2_pokémon_team[active2].name} has 💚{p2_pokémon_team[active2].hp} left')
+            p(f"{player2_name}'s {p2_pokémon_team[active2].name} has 💚{p2_pokémon_team[active2].hp} left")
             for index, listed_move in enumerate(p2_pokémon_team[active2].moves, start = 1):
                 dramatic_effect(f"{index}. {listed_move.name}")
                 time.sleep(0.5)

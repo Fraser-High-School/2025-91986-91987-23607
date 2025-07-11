@@ -372,7 +372,7 @@ def hit_order(faster_pkmn, slower_pkmn, dmg_fast, dmg_slow, move_fast, move_slow
         dramatic_effect(f"{faster_pkmn.name} fainted! 😵‍💫")
         return 1
     else:
-        dramatic_effect(f'{slower_pkmn.name} has 💚{slower_pkmn.hp} left')
+        dramatic_effect(f"{trainer_slow}'s {slower_pkmn.name} has 💚{slower_pkmn.hp} left")
         dramatic_effect(f"{trainer_slow}'s {slower_pkmn.name} used {move_slow.name}💥")
         time.sleep(1.5)
         is_effective = super_effective(move_slow, faster_pkmn)
@@ -389,7 +389,7 @@ def hit_order(faster_pkmn, slower_pkmn, dmg_fast, dmg_slow, move_fast, move_slow
         dramatic_effect(f"{slower_pkmn.name} fainted!😵‍💫")
         return 2
     else:
-        dramatic_effect(f'{faster_pkmn.name} has 💚{faster_pkmn.hp} left')
+        dramatic_effect(f"{trainer_fast}'s {faster_pkmn.name} has 💚{faster_pkmn.hp} left")
     return 0
 
 #Main
